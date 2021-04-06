@@ -1,3 +1,14 @@
+/common.js
+/listing.js
+/order.js
+/product.js
+/user.js
+/common/
+/listing/
+/order/
+/product/
+/user/
+
 # Logs
 logs
 *.log
