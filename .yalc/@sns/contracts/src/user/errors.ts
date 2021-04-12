@@ -3,7 +3,7 @@ import {
   ConflictError,
   NotAuthorisedError,
   NotFoundError,
-} from "@sns/contracts/common";
+} from "../common";
 
 export enum UserCode {
   NOT_UNIQUE = 200,

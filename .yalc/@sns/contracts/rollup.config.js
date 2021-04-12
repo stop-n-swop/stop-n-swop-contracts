@@ -24,7 +24,6 @@ const configs = domains.map((domain) => {
         sourcemap: false,
       }),
     ],
-    external: ["@sns/contracts/common"],
   };
 });
 
