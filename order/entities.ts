@@ -1,4 +1,4 @@
-import { Status } from "./enums";
+import type { Status } from "./enums";
 
 export interface Order {
   listingId: string;

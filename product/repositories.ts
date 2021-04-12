@@ -1,4 +1,4 @@
-import { Game, Manufacturer, Platform, Product } from "./entities";
+import type { Game, Manufacturer, Platform, Product } from "./entities";
 
 export type Games = Game[];
 export type Platforms = Platform[];

@@ -1,4 +1,4 @@
-import { AuditItem, Listing } from "./entities";
+import type { AuditItem, Listing } from "./entities";
 
 export type Audit = AuditItem[];
 

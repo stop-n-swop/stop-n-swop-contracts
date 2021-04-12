@@ -1,4 +1,4 @@
-import { Type } from "./enums";
+import type { Type } from "./enums";
 
 export interface Manufacturer {
   id: string;
