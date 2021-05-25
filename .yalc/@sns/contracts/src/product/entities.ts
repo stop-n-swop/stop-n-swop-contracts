@@ -17,7 +17,7 @@ export interface Product {
 export interface Game extends Product {
   type: Type.GAME;
   rawgId: number;
-  platforms: string[];
+  platforms: Array<{ releaseDate: Date; id: string }>;
   developers: string[];
   publishers: string[];
 }
