@@ -7,16 +7,21 @@ export interface Stats {
     instructions: boolean;
 }
 export interface Listing {
-    productId: string;
-    listingId: string;
-    images: string[];
+    id: string;
+    products: Array<{
+        productId: string;
+        platformId: string;
+    }>;
+    images: Record<string, string>;
     price: number;
-    rating: number;
-    location: string;
+    postage: number;
+    currency: string;
     stats: Stats;
     description: string;
-    username: string;
     createdDate: Date;
+    username: string;
+    location: string;
+    rating: number;
 }
 export interface AuditItem {
     listingId: string;

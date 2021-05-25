@@ -9,16 +9,23 @@ export interface Stats {
 }
 
 export interface Listing {
-  productId: string;
-  listingId: string;
-  images: string[];
+  id: string;
+  products: Array<{
+    productId: string;
+    platformId: string;
+  }>;
+  images: Record<string, string>;
   price: number;
-  rating: number;
-  location: string;
+  postage: number;
+  currency: string;
   stats: Stats;
   description: string;
-  username: string;
+  // calculated
   createdDate: Date;
+  // computed
+  username: string;
+  location: string;
+  rating: number;
 }
 
 export interface AuditItem {
