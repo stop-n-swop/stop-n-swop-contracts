@@ -1,4 +1,4 @@
-import { Listing } from "./entities";
+import { AuditItem, Listing } from "./entities";
 import { Condition, Region } from "./enums";
 export declare type GetListingRequirementsRequest = void;
 export interface GetListingRequirementsResponse {
@@ -17,8 +17,8 @@ export interface UpdateListingParams {
 export declare type UpdateListingRequest = Omit<Listing, "createdDate" | "username" | "location" | "rating" | "status" | "id">;
 export declare type UpdateListingResponse = Listing;
 export interface SearchListingsRequest {
-    productId: string;
-    platformId: string;
+    productId?: string;
+    platformId?: string;
     boxed?: boolean;
     instructions?: boolean;
     condition?: Condition | Condition[];
@@ -47,4 +47,11 @@ export interface GetProductsListingCountResponse {
         platformId: string;
         count: number;
     }>;
+}
+export interface GetHistoryParams {
+    listingId: string;
+}
+export declare type GetHistoryRequest = void;
+export interface GetHistoryResponse {
+    history: AuditItem[];
 }
