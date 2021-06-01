@@ -10,21 +10,15 @@ export interface GetListingRequirementsResponse {
   }>;
 }
 
-export type CreateListingRequest = Omit<
-  Listing,
-  "id" | "createdDate" | "username" | "location" | "rating" | "status"
->;
+export type CreateListingRequest = Omit<UpdateListingRequest, "id">;
 
 export interface CreateListingResponse {
   id: string;
 }
 
-export interface UpdateListingParams {
-  listingId: string;
-}
 export type UpdateListingRequest = Omit<
   Listing,
-  "createdDate" | "username" | "location" | "rating" | "status" | "id"
+  "createdDate" | "username" | "location" | "rating" | "status"
 >;
 export type UpdateListingResponse = Listing;
 
