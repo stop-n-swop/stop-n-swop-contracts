@@ -1,9 +1,10 @@
-/common.js
+/basket.js
 /listing.js
 /order.js
 /product.js
 /user.js
-/common/
+
+/basket/
 /listing/
 /order/
 /product/

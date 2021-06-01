@@ -26,6 +26,7 @@ export interface Listing {
   username: string;
   location: string;
   rating: number;
+  status: Status;
 }
 
 export interface AuditItem {
