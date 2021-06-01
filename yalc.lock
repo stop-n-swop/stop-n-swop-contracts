@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@sns/contracts": {
-      "signature": "543483f3ccd9021e7f35fa9c8378b65c",
+      "signature": "02f8dea76b119ed2d69098ed511066bd",
       "file": true
     }
   }
