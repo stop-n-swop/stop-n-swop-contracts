@@ -25,6 +25,7 @@ export interface Listing {
     status: Status;
 }
 export interface AuditItem {
+    orderId: string;
     listingId: string;
     date: Date;
     username: string;

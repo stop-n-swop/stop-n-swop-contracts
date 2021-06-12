@@ -1,3 +1,4 @@
+import { AuditItem } from "../listing";
 import { Order } from "./entities";
 export interface SearchOrdersRequest {
     listingId?: string;
@@ -23,4 +24,11 @@ export interface PatchOrderParams {
 }
 export declare type PatchOrderRequest = Pick<Order, "status">;
 export interface PatchOrderResponse {
+}
+export interface GetHistoryParams {
+    orderId: string;
+}
+export declare type GetHistoryRequest = void;
+export interface GetHistoryResponse {
+    history: AuditItem[];
 }

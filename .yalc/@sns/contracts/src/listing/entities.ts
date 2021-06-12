@@ -30,6 +30,7 @@ export interface Listing {
 }
 
 export interface AuditItem {
+  orderId: string;
   listingId: string;
   date: Date;
   username: string;
