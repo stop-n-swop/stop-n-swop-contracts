@@ -25,7 +25,6 @@ export type UpdateListingResponse = Listing;
 
 export interface SearchListingsRequest {
   productId?: string;
-  platformId?: string;
   boxed?: boolean;
   instructions?: boolean;
   condition?: Condition | Condition[];
@@ -46,15 +45,11 @@ export type GetListingRequest = void;
 export type GetListingResponse = Listing;
 
 export interface GetProductsListingCountRequest {
-  products: Array<{
-    productId: string;
-    platformId: string;
-  }>;
+  productIds: string[];
 }
 export interface GetProductsListingCountResponse {
   counts: Array<{
     productId: string;
-    platformId: string;
     count: number;
   }>;
 }
