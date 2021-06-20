@@ -64,3 +64,11 @@ export type GetHistoryRequest = void;
 export interface GetHistoryResponse {
   history: AuditItem[];
 }
+
+export interface ChangeListingStatusParams {
+  listingId: string;
+}
+export interface ChangeListingStatusRequest {
+  status: Status;
+}
+export interface ChangeListingStatusResponse {}
