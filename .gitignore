@@ -2,6 +2,7 @@
 /order.js
 /product.js
 /user.js
+/utils.d.ts
 
 /listing/
 /order/
