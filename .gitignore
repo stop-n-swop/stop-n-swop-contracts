@@ -1,10 +1,12 @@
 /listing.js
+/notice.js
 /order.js
 /product.js
 /user.js
 /utils.d.ts
 
 /listing/
+/notice/
 /order/
 /product/
 /user/
