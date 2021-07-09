@@ -17,9 +17,16 @@ export interface LoginRequest {
 export type LoginResponse = RefreshTokenResponse;
 
 export interface UpdateUserRequest
-  extends Partial<Omit<User, "address" | "preferences">> {
+  extends Pick<
+    Partial<User>,
+    | "username"
+    | "phoneNumber"
+    | "firstName"
+    | "lastName"
+    | "dateOfBirth"
+    | "nationality"
+  > {
   address?: Partial<User["address"]>;
-  preferences?: Partial<User["preferences"]>;
 }
 
 export type UpdateUserResponse = void;
