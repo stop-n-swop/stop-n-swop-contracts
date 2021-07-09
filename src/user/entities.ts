@@ -1,3 +1,5 @@
+import { KycStatus } from "./enums";
+
 export interface Address {
   line1: string;
   line2: string;
@@ -9,8 +11,11 @@ export interface Address {
 export interface User {
   email: string;
   username: string;
-  name: string;
   phoneNumber: string;
+  firstName: string;
+  lastName: string;
+  dateOfBirth: Date;
+  nationality: string;
   address: {
     line1: string;
     line2: string;
@@ -20,4 +25,7 @@ export interface User {
   };
   preferences: Record<string, unknown>;
   verified: boolean;
+  isRegistered: boolean;
+  hasAccount: boolean;
+  kycStatus: KycStatus;
 }
