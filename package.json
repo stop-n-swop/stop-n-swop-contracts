@@ -9,7 +9,8 @@
     "build:ts": "tsc --emitDeclarationOnly --outDir ./",
     "build": "yarn build:js && yarn build:ts",
     "prepublishOnly": "yarn build",
-    "start": "concurrently -k \"cd ../api && yarn dev\" \"cd ../api && yarn tunnel\" \"cd ../ui && yarn dev\""
+    "start": "concurrently -k \"cd ../api && yarn dev\" \"cd ../api && yarn tunnel\" \"cd ../ui && yarn dev\"",
+    "pow": "yalc publish --push && cd ../abyss && yalc publish --push && cd ../ui && rm -rf node_modules && yarn && cd ../api && rm -rf node_modules && yarn && cd ../contracts"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
