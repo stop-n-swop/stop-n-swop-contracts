@@ -19,6 +19,7 @@ export interface Game extends Product {
   rawgId: number;
   gameId: string;
   platformId: string;
+  platformIds: string[];
   developers: string[];
   publishers: string[];
 }
