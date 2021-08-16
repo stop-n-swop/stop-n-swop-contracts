@@ -49,7 +49,8 @@ export type GetListingRequest = void;
 export type GetListingResponse = Listing;
 
 export interface GetProductsListingCountRequest {
-  productIds: string[];
+  productIds?: string[];
+  gameIds?: string[];
 }
 export interface GetProductsListingCountResponse {
   counts: Array<{
