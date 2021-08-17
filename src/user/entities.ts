@@ -17,6 +17,8 @@ export interface User {
     postcode: string;
     country: string;
   };
-  preferences: Record<string, unknown>;
+  preferences: {
+    manualApproval: boolean;
+  };
   verified: boolean;
 }
