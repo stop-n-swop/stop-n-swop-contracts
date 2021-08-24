@@ -6,6 +6,7 @@ export interface SearchGamesRequest {
   platformIds?: string[];
   available?: boolean;
   group?: boolean;
+  favourites?: boolean;
 }
 
 export interface SearchGamesResponse {
@@ -21,9 +22,9 @@ export interface GetSearchCountsRequest {
   q?: string;
   platformIds?: string[];
   available?: boolean;
+  favourites?: boolean;
 }
 export interface GetSearchCountsResponse {
   total: number;
-  available: number;
   platforms: Record<string, number>;
 }

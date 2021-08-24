@@ -13,6 +13,7 @@ export interface RefreshTokenResponse {
 export interface LoginRequest {
   provider: OauthProvider;
   token: string;
+  favouriteProductIds: string[];
 }
 export type LoginResponse = RefreshTokenResponse;
 
@@ -22,3 +23,7 @@ export interface UpdateUserRequest extends Pick<Partial<User>, "username"> {
 }
 
 export type UpdateUserResponse = void;
+
+export interface FetchFavouritesResponse {
+  favourites: string[];
+}
