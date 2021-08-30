@@ -17,7 +17,7 @@ export const getListedPrice = (listing: Listing) => {
 
 /** Returns the amount of order protection that will be deducted from the listed price */
 export const getProtectionCharge = (listing: Listing) => {
-  return Math.ceil(getListedPrice(listing) * 0.05);
+  return Math.ceil(getListedPrice(listing) * 0.04);
 };
 
 /** Returns the total platform charge that will be deducted from the listed price */
