@@ -20,11 +20,16 @@ export interface Game extends Product {
   gameId: string;
   platformId: string;
   platformIds: string[];
-  developers: string[];
-  publishers: string[];
+  developer: Company;
+  publisher: Company;
 }
 
 export interface Platform extends Product {
   type: Type.PLATFORM;
   rawgId: number;
+}
+
+export interface Company {
+  id: string;
+  name: string;
 }
