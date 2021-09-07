@@ -1,5 +1,5 @@
 import { Status } from "../order";
-import { AuditItem, Listing } from "./entities";
+import { AuditItem, Listing, Discount } from "./entities";
 import { Condition, Region } from "./enums";
 import { Address } from "../user";
 
@@ -20,7 +20,13 @@ export interface CreateListingResponse {
 
 export type UpdateListingRequest = Omit<
   Listing,
-  "createdDate" | "username" | "location" | "rating" | "status"
+  | "createdDate"
+  | "username"
+  | "location"
+  | "rating"
+  | "status"
+  | "id"
+  | "discount"
 >;
 export type UpdateListingResponse = Listing;
 
@@ -89,3 +95,9 @@ export interface GetListingAddressResponse {
   name: string;
   address: Address;
 }
+
+export type GetDiscountParams = {
+  productId: string;
+};
+export type GetDiscountBody = void;
+export type GetDiscountResponse = Discount;

@@ -10,19 +10,57 @@ export const getPostage = (listing: Listing) => {
   return listing.postage;
 };
 
+/** Returns the discount amount */
+export const getDiscount = (listing: Listing) => {
+  let discount = 0;
+  if (!listing.discount) {
+    return discount;
+  }
+  const total = getListedPrice(listing);
+  if (listing.discount.percentage) {
+    const percDiscount = Math.floor(
+      total * (listing.discount.percentage / 100)
+    );
+    discount += percDiscount;
+  }
+  if (listing.discount.fixed) {
+    discount += listing.discount.fixed;
+  }
+  return discount;
+};
+
 /** Returns the total price set by the seller, i.e. base price + postage */
 export const getListedPrice = (listing: Listing) => {
   return getBasePrice(listing) + getPostage(listing);
 };
 
+const getRawProtectionCharge = (listing: Listing) => {
+  return Math.ceil(getListedPrice(listing) * 0.04);
+};
+
+const getRawPlatformCharge = (listing: Listing) => {
+  return Math.ceil(getListedPrice(listing) * 0.04) + 30;
+};
+
 /** Returns the amount of order protection that will be deducted from the listed price */
 export const getProtectionCharge = (listing: Listing) => {
-  return Math.ceil(getListedPrice(listing) * 0.04);
+  // discounts are first deducted from the platform charge, any remaining is then deducted from the protection charge
+  // calculate the amount of discount remaining after the platform charge
+  // and then take that off the protection charge
+  const platformCharge = getRawPlatformCharge(listing);
+  const fullDiscount = getDiscount(listing);
+  // you can't discount more than 100% of the fees!
+  const discount = Math.max(fullDiscount - platformCharge, 0);
+  const protection = getRawProtectionCharge(listing);
+
+  return Math.max(protection - discount, 0);
 };
 
 /** Returns the total platform charge that will be deducted from the listed price */
 export const getPlatformCharge = (listing: Listing) => {
-  return Math.ceil(getListedPrice(listing) * 0.04) + 30;
+  const charge = getRawPlatformCharge(listing);
+  const discount = getDiscount(listing);
+  return Math.max(charge - discount, 0);
 };
 
 /** Returns the actual price the customer will pay i.e. price + postage */
