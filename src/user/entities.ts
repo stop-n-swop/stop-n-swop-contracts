@@ -1,3 +1,5 @@
+import { UserLevel } from "./enums";
+
 export interface Address {
   line1: string;
   line2: string;
@@ -10,6 +12,7 @@ export interface User {
   email: string;
   clientEmail: string;
   username: string;
+  level: UserLevel;
   address: {
     line1: string;
     line2: string;
