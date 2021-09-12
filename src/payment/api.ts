@@ -18,11 +18,6 @@ export interface GetTransactionsResponse {
   transactions: Transaction[];
 }
 
-export interface GetBalanceResponse {
-  balance: number;
-  currency: string;
-}
-
 export interface WithdrawBalanceRequest {
   amount: number;
 }
