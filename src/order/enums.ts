@@ -1,4 +1,5 @@
 export enum Status {
+  VERIFYING = "verifying",
   OPEN = "open", // the default - listing is open
   CLOSED = "closed", // listing has been closed by the seller
   CREATED = "created", // a buyer has started the checkout process
