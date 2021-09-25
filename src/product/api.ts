@@ -12,6 +12,7 @@ export interface SearchGamesRequest {
 }
 export interface SearchGamesResponse {
   nextPage: number;
+  lastPage: number;
   games: Game[];
 }
 
