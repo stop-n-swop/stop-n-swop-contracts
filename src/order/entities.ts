@@ -10,4 +10,6 @@ export interface Order {
   deliveryAddress: Address;
   errorCode: string;
   postedDate: Date;
+  trackingProvider: string;
+  trackingNumber: string;
 }

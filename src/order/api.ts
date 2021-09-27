@@ -29,6 +29,15 @@ export interface UpdateOrderStatusParams {
 export type UpdateOrderStatusRequest = Pick<Order, "status">;
 export type UpdateOrderStatusResponse = Order;
 
+export interface PatchOrderParams {
+  orderId: string;
+}
+export type PatchOrderRequest = Pick<
+  Partial<Order>,
+  "trackingNumber" | "trackingProvider"
+>;
+export type PatchOrderResponse = Order;
+
 export interface GetHistoryParams {
   orderId: string;
 }
