@@ -1,3 +1,4 @@
+import { OauthProvider } from ".";
 import { UserLevel } from "./enums";
 
 export interface Address {
@@ -29,4 +30,5 @@ export interface User {
   verified: boolean;
   balance: number;
   currency: string;
+  logins: OauthProvider[];
 }
