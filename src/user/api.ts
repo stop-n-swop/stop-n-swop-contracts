@@ -29,3 +29,8 @@ export type UpdateUserResponse = void;
 export interface FetchFavouritesResponse {
   favourites: string[];
 }
+
+export type RemoveProviderRequest = {
+  provider: OauthProvider;
+};
+export type RemoveProviderResponse = void;
