@@ -1,5 +1,5 @@
-import { Address } from "../user";
-import type { Status } from "./enums";
+import { Address } from '../user/entities';
+import type { Status } from './enums';
 
 export interface Order {
   id: string;

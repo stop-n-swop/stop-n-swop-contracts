@@ -1,5 +1,5 @@
-import type { Condition, Region } from "./enums";
-import type { Status } from "../order";
+import type { Condition, Region } from './enums';
+import type { Status } from '../order/enums';
 
 export interface Stats {
   condition: Condition;

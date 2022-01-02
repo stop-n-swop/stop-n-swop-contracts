@@ -1,5 +1,5 @@
-import { AuditItem } from "../listing";
-import { Order } from "./entities";
+import { AuditItem } from '../listing/entities';
+import { Order } from './entities';
 
 export interface SearchOrdersRequest {
   listingId?: string;
@@ -26,7 +26,7 @@ export interface CreateOrderResponse {
 export interface UpdateOrderStatusParams {
   orderId: string;
 }
-export type UpdateOrderStatusRequest = Pick<Order, "status">;
+export type UpdateOrderStatusRequest = Pick<Order, 'status'>;
 export type UpdateOrderStatusResponse = Order;
 
 export interface PatchOrderParams {
@@ -34,7 +34,7 @@ export interface PatchOrderParams {
 }
 export type PatchOrderRequest = Pick<
   Partial<Order>,
-  "trackingNumber" | "trackingProvider"
+  'trackingNumber' | 'trackingProvider'
 >;
 export type PatchOrderResponse = Order;
 

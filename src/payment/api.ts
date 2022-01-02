@@ -1,9 +1,9 @@
-import { Transaction } from "./entities";
+import { Transaction } from './entities';
 
 export interface StartPaymentParams {
   orderId: string;
 }
-export interface StartOrderBody {}
+export type StartOrderBody = Record<string, never>;
 export interface StartOrderResponse {
   paymentId: string;
 }
@@ -11,8 +11,8 @@ export interface StartOrderResponse {
 export interface PlaceOrderParams {
   orderId: string;
 }
-export interface PlaceOrderRequest {}
-export type PlaceOrderResponse = {};
+export type PlaceOrderRequest = Record<string, never>;
+export type PlaceOrderResponse = Record<string, never>;
 
 export interface GetTransactionsResponse {
   transactions: Transaction[];

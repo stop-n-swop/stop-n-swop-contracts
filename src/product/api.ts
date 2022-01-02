@@ -1,4 +1,4 @@
-import { Game } from "./entities";
+import { Game } from './entities';
 
 export interface SearchGamesRequest {
   page?: number;
@@ -16,7 +16,7 @@ export interface SearchGamesResponse {
   games: Game[];
 }
 
-export type GetPopularGamesRequest = {};
+export type GetPopularGamesRequest = Record<string, never>;
 export type GetPopularGamesResponse = {
   games: Game[];
 };
@@ -25,7 +25,7 @@ export type GetGameParams = { gameId: string };
 export type GetGameRequest = void;
 export type GetGameResponse = Game;
 
-export type GetSearchCountsRequest = Omit<SearchGamesRequest, "page" | "group">;
+export type GetSearchCountsRequest = Omit<SearchGamesRequest, 'page' | 'group'>;
 export interface GetSearchCountsResponse {
   total: number;
   platforms: Record<string, number>;
@@ -35,4 +35,4 @@ export interface GetSearchCountsResponse {
 
 export type GameViwedParams = { productId: string };
 export type GameViewedRequest = void;
-export type GameViewedResponse = {};
+export type GameViewedResponse = Record<string, never>;

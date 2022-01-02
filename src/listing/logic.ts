@@ -1,4 +1,4 @@
-import { Listing } from "./entities";
+import { Listing } from './entities';
 
 /** Returns the base price of the listing, not including postage */
 export const getBasePrice = (listing: Listing) => {
@@ -10,6 +10,11 @@ export const getPostage = (listing: Listing) => {
   return listing.postage;
 };
 
+/** Returns the total price set by the seller, i.e. base price + postage */
+export const getListedPrice = (listing: Listing) => {
+  return getBasePrice(listing) + getPostage(listing);
+};
+
 /** Returns the discount amount */
 export const getDiscount = (listing: Listing) => {
   let discount = 0;
@@ -19,7 +24,7 @@ export const getDiscount = (listing: Listing) => {
   const total = getListedPrice(listing);
   if (listing.discount.percentage) {
     const percDiscount = Math.floor(
-      total * (listing.discount.percentage / 100)
+      total * (listing.discount.percentage / 100),
     );
     discount += percDiscount;
   }
@@ -27,11 +32,6 @@ export const getDiscount = (listing: Listing) => {
     discount += listing.discount.fixed;
   }
   return discount;
-};
-
-/** Returns the total price set by the seller, i.e. base price + postage */
-export const getListedPrice = (listing: Listing) => {
-  return getBasePrice(listing) + getPostage(listing);
 };
 
 const getRawProtectionCharge = (listing: Listing) => {

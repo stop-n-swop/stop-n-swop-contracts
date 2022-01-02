@@ -1,4 +1,4 @@
-import { Type } from "./enums";
+import { Type } from './enums';
 
 export interface Notice {
   type: Type;

@@ -1,7 +1,7 @@
 export enum OauthProvider {
-  GOOGLE = "google",
-  FACEBOOK = "facebook",
-  PAYPAL = "paypal",
+  GOOGLE = 'google',
+  FACEBOOK = 'facebook',
+  PAYPAL = 'paypal',
 }
 
 export enum UserLevel {
