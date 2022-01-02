@@ -1,5 +1,4 @@
-import { OauthProvider } from ".";
-import { UserLevel } from "./enums";
+import { UserLevel, OauthProvider } from './enums';
 
 export interface Address {
   line1: string;

@@ -1,4 +1,4 @@
 export enum Type {
-  GAME = "game",
-  PLATFORM = "platform",
+  GAME = 'game',
+  PLATFORM = 'platform',
 }

@@ -1,7 +1,7 @@
-import { Status } from "../order";
-import { AuditItem, Listing, Discount } from "./entities";
-import { Condition, Region } from "./enums";
-import { Address } from "../user";
+import { Status } from '../order';
+import { AuditItem, Listing, Discount } from './entities';
+import { Condition, Region } from './enums';
+import { Address } from '../user';
 
 export type GetListingRequirementsRequest = void;
 
@@ -12,7 +12,7 @@ export interface GetListingRequirementsResponse {
   }>;
 }
 
-export type CreateListingRequest = Omit<UpdateListingRequest, "id">;
+export type CreateListingRequest = Omit<UpdateListingRequest, 'id'>;
 
 export interface CreateListingResponse {
   id: string;
@@ -20,13 +20,13 @@ export interface CreateListingResponse {
 
 export type UpdateListingRequest = Omit<
   Listing,
-  | "createdDate"
-  | "username"
-  | "location"
-  | "rating"
-  | "status"
-  | "id"
-  | "discount"
+  | 'createdDate'
+  | 'username'
+  | 'location'
+  | 'rating'
+  | 'status'
+  | 'id'
+  | 'discount'
 >;
 export type UpdateListingResponse = Listing;
 
@@ -87,7 +87,7 @@ export interface ChangeListingStatusParams {
 export interface ChangeListingStatusRequest {
   status: Status;
 }
-export interface ChangeListingStatusResponse {}
+export type ChangeListingStatusResponse = Record<string, never>;
 
 export interface GetListingAddressParams {
   listingId: string;

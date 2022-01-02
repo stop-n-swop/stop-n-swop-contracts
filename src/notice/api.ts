@@ -1,4 +1,4 @@
-import { Notice } from "./entities";
+import { Notice } from './entities';
 
 export type GetNoticesReQuest = void;
 export interface GetNoticesResponse {
