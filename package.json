@@ -1,5 +1,5 @@
 {
-  "name": "@sns/contracts",
+  "name": "@stop-n-swop/contracts",
   "publishConfig": {
     "access": "public"
   },
