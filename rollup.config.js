@@ -1,30 +1,38 @@
-import babel from "rollup-plugin-babel";
-import localResolve from "rollup-plugin-node-resolve";
-import cleanup from "rollup-plugin-cleanup";
+import babel from 'rollup-plugin-babel';
+import localResolve from 'rollup-plugin-node-resolve';
+import cleanup from 'rollup-plugin-cleanup';
 
-const domains = ["listing", "notice", "order", "payment", "product", "user"];
+const domains = [
+  'listing',
+  'merchant',
+  'notice',
+  'order',
+  'payment',
+  'product',
+  'user',
+];
 
 const configs = domains.map((domain) => {
   return {
     input: `src/${domain}/index.ts`,
     output: {
       file: `${domain}.js`,
-      format: "cjs",
+      format: 'cjs',
     },
     plugins: [
       localResolve({
-        extensions: [".js", ".ts"],
+        extensions: ['.js', '.ts'],
       }),
       babel({
-        exclude: "node_modules/**",
-        extensions: [".js", ".ts"],
+        exclude: 'node_modules/**',
+        extensions: ['.js', '.ts'],
       }),
       cleanup({
-        extensions: ["js", "ts"],
+        extensions: ['js', 'ts'],
         sourcemap: false,
       }),
     ],
-    external: ["@sns/contracts/common"],
+    external: ['@sns/contracts/common'],
   };
 });
 

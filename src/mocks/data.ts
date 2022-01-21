@@ -2,6 +2,7 @@ import { Game, Platform, Type } from '../product';
 import { Order, Status } from '../order';
 import { Listing, Condition, Region } from '../listing';
 import { User, UserLevel } from '../user';
+import { Merchant } from '../merchant';
 
 export const exampleBoxArt =
   'http://www.boxmygames.com/wp-content/uploads/2015/07/Mario-Kart-64-2.jpg';
@@ -16,10 +17,8 @@ export const user: User = {
     country: 'GB',
     location: 'London, UK',
   },
-  balance: 0,
-  clientEmail: 'jb@sns.com',
+  merchantId: '1',
   created: new Date(),
-  currency: 'GBP',
   email: 'jb@sns.com',
   level: UserLevel.USER,
   logins: [],
@@ -28,6 +27,18 @@ export const user: User = {
     noticeEmails: true,
   },
   verified: true,
+};
+
+export const merchant: Merchant = {
+  username: user.username,
+  id: '1',
+  accountNumber: '889',
+  balance: 0,
+  outgoingBalance: null,
+  currency: 'GBP',
+  onboarded: true,
+  sortCode: null,
+  name: null,
 };
 
 export const platform: Platform = {

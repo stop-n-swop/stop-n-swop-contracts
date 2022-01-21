@@ -4,15 +4,10 @@ export interface StartPaymentParams {
   orderId: string;
 }
 export type StartOrderBody = Record<string, never>;
-export interface StartOrderResponse {
-  paymentId: string;
-}
+export type StartOrderResponse = Record<string, never>;
 
-export interface PlaceOrderParams {
-  orderId: string;
-}
-export type PlaceOrderRequest = Record<string, never>;
-export type PlaceOrderResponse = Record<string, never>;
+export type GetClientSecretParams = { orderId: string };
+export type GetClientSecretResponse = { secret: string };
 
 export interface GetTransactionsResponse {
   transactions: Transaction[];

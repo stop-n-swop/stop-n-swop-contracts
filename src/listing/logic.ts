@@ -1,5 +1,15 @@
 import { Listing } from './entities';
 
+const PROVIDER_PAY_IN_PERC = 0.014;
+const PROVIDER_PAY_IN_FIXED = 20;
+const PROVIDER_PAY_OUT_PERC = 0;
+const PROVIDER_PAY_OUT_FIXED = 0;
+
+const PROTECTION_PERC = 0.04;
+const PROTECTION_FIXED = 0;
+const PLATFORM_PERC = 0.04;
+const PLATFORM_FIXED = 30;
+
 /** Returns the base price of the listing, not including postage */
 export const getBasePrice = (listing: Listing) => {
   return listing.price;
@@ -35,11 +45,13 @@ export const getDiscount = (listing: Listing) => {
 };
 
 const getRawProtectionCharge = (listing: Listing) => {
-  return Math.ceil(getListedPrice(listing) * 0.04);
+  return (
+    Math.ceil(getListedPrice(listing) * PROTECTION_PERC) + PROTECTION_FIXED
+  );
 };
 
 const getRawPlatformCharge = (listing: Listing) => {
-  return Math.ceil(getListedPrice(listing) * 0.04) + 30;
+  return Math.ceil(getListedPrice(listing) * PLATFORM_PERC) + PLATFORM_FIXED;
 };
 
 /** Returns the amount of order protection that will be deducted from the listed price */
@@ -91,12 +103,15 @@ export const getTotalCharges = (listing: Listing) => {
 // These are all just speculative of course
 /** The amount paypal charges on pay in */
 export const getProviderPayInCharge = (listing: Listing) => {
-  return Math.ceil(getFinalPrice(listing) * 0.029) + 30;
+  return (
+    Math.ceil(getFinalPrice(listing) * PROVIDER_PAY_IN_PERC) +
+    PROVIDER_PAY_IN_FIXED
+  );
 };
 
 /** Calculates the payout charge of any amount */
 export const calculateProviderPayOutCharge = (amount: number) => {
-  return Math.ceil(amount * 0.02);
+  return Math.ceil(amount * PROVIDER_PAY_OUT_PERC) + PROVIDER_PAY_OUT_FIXED;
 };
 
 /** the amount paypal charges on pay out */
