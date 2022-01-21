@@ -1,4 +1,5 @@
 /listing.js
+/merchant.js
 /notice.js
 /order.js
 /payment.js
@@ -7,6 +8,7 @@
 /utils.d.ts
 
 /listing/
+/merchant/
 /mocks/
 /notice/
 /order/

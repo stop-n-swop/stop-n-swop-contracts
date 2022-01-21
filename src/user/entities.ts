@@ -10,7 +10,7 @@ export interface Address {
 
 export interface User {
   email: string;
-  clientEmail: string;
+  merchantId: string;
   username: string;
   level: UserLevel;
   address: {
@@ -27,7 +27,5 @@ export interface User {
     noticeEmails: boolean;
   };
   verified: boolean;
-  balance: number;
-  currency: string;
   logins: OauthProvider[];
 }
