@@ -1,5 +1,5 @@
 import { getDiscount, getListedPrice, getPostage } from '..';
-import { listing } from '../../mocks/data';
+import { listing } from '../../mocks';
 import { getBasePrice } from '../logic';
 
 describe('getBasePrice', () => {

@@ -5,6 +5,7 @@ import cleanup from 'rollup-plugin-cleanup';
 const domains = [
   'listing',
   'merchant',
+  'mocks',
   'notice',
   'order',
   'payment',

@@ -34,11 +34,8 @@ export const merchant: Merchant = {
   id: '1',
   accountNumber: '889',
   balance: 0,
-  outgoingBalance: null,
   currency: 'GBP',
   onboarded: true,
-  sortCode: null,
-  name: null,
 };
 
 export const platform: Platform = {
