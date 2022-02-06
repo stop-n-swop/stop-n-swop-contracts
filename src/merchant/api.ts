@@ -1,9 +1,11 @@
-import { Merchant, MerchantAccount } from './entities';
+import { Merchant, Payout, MerchantAccount } from './entities';
 
 export type GetMerchantResponse = Merchant;
 
-export type GetMerchantAccountsRequest = { password: string };
-export type GetMerchantAccountsResponse = { accounts: MerchantAccount[] };
+export type GetMerchantAccountRequest = { password: string };
+export type GetMerchantAccountResponse = MerchantAccount;
+
+export type GetPayoutsResponse = { payouts: Payout[] };
 
 export type UpdateBankDetailsRequest = {
   name: string;

@@ -11,8 +11,12 @@ export interface MerchantAccount {
   merchantId: string;
   name: string;
   balance: number;
-  outgoingBalance: number;
   currency: string;
   accountNumber: string;
   sortCode: string;
+}
+
+export interface Payout {
+  merchantId: string;
+  amount: number;
 }
