@@ -34,3 +34,9 @@ export type RemoveProviderRequest = {
   provider: OauthProvider;
 };
 export type RemoveProviderResponse = void;
+
+export type SendReportRequest = {
+  url: string;
+  category: string;
+  message: string;
+};
