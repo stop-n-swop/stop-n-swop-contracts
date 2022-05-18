@@ -2,6 +2,7 @@ export enum OauthProvider {
   TEST = 'test',
   GOOGLE = 'google',
   FACEBOOK = 'facebook',
+  SSO = 'sso',
 }
 
 export enum UserLevel {
