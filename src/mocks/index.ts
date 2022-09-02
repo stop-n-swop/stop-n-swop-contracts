@@ -66,6 +66,7 @@ export const game: Game = {
 export const listing: Listing = {
   id: 'listing-id-1',
   createdDate: new Date(),
+  completedDate: new Date(),
   currency: 'GBP',
   description: '',
   images: {

@@ -20,6 +20,7 @@ export interface Listing {
   description: string;
   // calculated
   createdDate: Date;
+  completedDate: Date;
   // computed
   username: string;
   location: string;
