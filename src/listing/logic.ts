@@ -1,14 +1,20 @@
 import { Listing } from './entities';
 
+// Pay Stripe 1.4%
 const PROVIDER_PAY_IN_PERC = 0.014;
+// Pay Stripe 20p
 const PROVIDER_PAY_IN_FIXED = 20;
+// No payout fees for stripe
 const PROVIDER_PAY_OUT_PERC = 0;
 const PROVIDER_PAY_OUT_FIXED = 0;
 
-const PROTECTION_PERC = 0.04;
+// Pay SNS 3% buyer protection fee
+const PROTECTION_PERC = 0.03;
 const PROTECTION_FIXED = 0;
-const PLATFORM_PERC = 0.04;
-const PLATFORM_FIXED = 30;
+// Pay SNS 3% platform fee
+const PLATFORM_PERC = 0.03;
+// Pay SNS 20p fixed fee
+const PLATFORM_FIXED = 20;
 
 /** Returns the base price of the listing, not including postage */
 export const getBasePrice = (listing: Listing) => {

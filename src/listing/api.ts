@@ -27,6 +27,7 @@ export type UpdateListingRequest = Omit<
   | 'status'
   | 'id'
   | 'discount'
+  | 'completedDate'
 >;
 export type UpdateListingResponse = Listing;
 
