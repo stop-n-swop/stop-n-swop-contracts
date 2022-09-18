@@ -1,4 +1,4 @@
-export enum Type {
+export enum ProductType {
   GAME = 'game',
   PLATFORM = 'platform',
 }

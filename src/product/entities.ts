@@ -1,4 +1,4 @@
-import type { Type } from './enums';
+import type { ProductType } from './enums';
 
 export interface Manufacturer {
   id: string;
@@ -6,7 +6,7 @@ export interface Manufacturer {
 }
 
 export interface Product {
-  type: Type;
+  type: ProductType;
   id: string;
   name: string;
   cover: string;
@@ -15,7 +15,7 @@ export interface Product {
 }
 
 export interface Game extends Product {
-  type: Type.GAME;
+  type: ProductType.GAME;
   rawgId: number;
   gameId: string;
   platformId: string;
@@ -25,7 +25,7 @@ export interface Game extends Product {
 }
 
 export interface Platform extends Product {
-  type: Type.PLATFORM;
+  type: ProductType.PLATFORM;
   rawgId: number;
 }
 

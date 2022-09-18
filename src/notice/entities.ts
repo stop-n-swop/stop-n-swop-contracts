@@ -1,7 +1,7 @@
-import { Type } from './enums';
+import { NoticeType } from './enums';
 
 export interface Notice {
-  type: Type;
+  type: NoticeType;
   created: Date;
   viewed: boolean;
   data?: Record<string, any>;

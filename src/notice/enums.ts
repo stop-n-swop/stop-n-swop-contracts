@@ -1,4 +1,4 @@
-export enum Type {
+export enum NoticeType {
   ORDER_CANCELLED = 'order_cancelled',
   ORDER_PLACED = 'order_placed',
   ORDER_DECLINED = 'order_declined',

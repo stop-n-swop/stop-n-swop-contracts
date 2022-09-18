@@ -38,10 +38,10 @@ export type PatchOrderRequest = Pick<
 >;
 export type PatchOrderResponse = Order;
 
-export interface GetHistoryParams {
+export interface GetOrderHistoryParams {
   orderId: string;
 }
-export type GetHistoryRequest = void;
-export interface GetHistoryResponse {
+export type GetOrderHistoryRequest = void;
+export interface GetOrderHistoryResponse {
   history: AuditItem[];
 }

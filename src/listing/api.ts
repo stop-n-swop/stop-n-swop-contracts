@@ -74,11 +74,11 @@ export interface GetCompletedListingCountResponse {
   count: number;
 }
 
-export interface GetHistoryParams {
+export interface GetListingHistoryParams {
   listingId: string;
 }
-export type GetHistoryRequest = void;
-export interface GetHistoryResponse {
+export type GetListingHistoryRequest = void;
+export interface GetListingHistoryResponse {
   history: AuditItem[];
 }
 

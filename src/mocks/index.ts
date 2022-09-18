@@ -1,4 +1,4 @@
-import { Game, Platform, Type } from '../product';
+import { Game, Platform, ProductType } from '../product';
 import { Order, Status } from '../order';
 import { Listing, Condition, Region } from '../listing';
 import { User, UserLevel } from '../user';
@@ -45,7 +45,7 @@ export const platform: Platform = {
   name: 'Nintendo 64',
   rawgId: 1,
   releaseDate: new Date(),
-  type: Type.PLATFORM,
+  type: ProductType.PLATFORM,
 };
 
 export const game: Game = {
@@ -60,7 +60,7 @@ export const game: Game = {
   platformIds: [platform.id],
   rawgId: 0,
   releaseDate: new Date(),
-  type: Type.GAME,
+  type: ProductType.GAME,
 };
 
 export const listing: Listing = {

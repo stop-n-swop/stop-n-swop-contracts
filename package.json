@@ -15,11 +15,14 @@
   "lint-staged": {
     "*.{ts,tsx}": "eslint"
   },
+  "main": "dist/cjs/contracts.js",
+  "module": "dist/es/contracts.js",
+  "types": "dist/ts/index.d.ts",
   "scripts": {
     "lint": "eslint src/ && tsc --noEmit",
     "test": "jest src/",
     "build:js": "rollup --config ./rollup.config.js",
-    "build:ts": "tsc --emitDeclarationOnly --outDir ./",
+    "build:ts": "tsc --emitDeclarationOnly --outDir ./dist/ts",
     "build": "yarn build:js && yarn build:ts",
     "prepublishOnly": "yarn build",
     "ci": "yarn install && yarn lint && yarn test && yarn build",
