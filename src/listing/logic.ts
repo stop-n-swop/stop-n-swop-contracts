@@ -1,4 +1,4 @@
-import { Listing } from './entities';
+import type { Listing } from './entities';
 
 // Pay Stripe 1.4%
 const PROVIDER_PAY_IN_PERC = 0.014;
@@ -16,6 +16,8 @@ const PLATFORM_PERC = 0.03;
 // Pay SNS 20p fixed fee
 const PLATFORM_FIXED = 20;
 
+type Opts = { useBalance?: boolean; balance?: number };
+
 /** Returns the base price of the listing, not including postage */
 export const getBasePrice = (listing: Listing) => {
   return listing.price;
@@ -29,6 +31,14 @@ export const getPostage = (listing: Listing) => {
 /** Returns the total price set by the seller, i.e. base price + postage */
 export const getListedPrice = (listing: Listing) => {
   return getBasePrice(listing) + getPostage(listing);
+};
+
+/** The amount of account balance the customer can use to pay for a listing */
+export const getBalanceUsed = (listing: Listing, opts: Opts) => {
+  if (opts?.useBalance && opts.balance > 0) {
+    return Math.min(opts.balance, getListedPrice(listing));
+  }
+  return 0;
 };
 
 /** Returns the discount amount */
@@ -81,12 +91,12 @@ export const getPlatformCharge = (listing: Listing) => {
   return Math.max(charge - discount, 0);
 };
 
-/** Returns the actual price the customer will pay i.e. price + postage */
-export const getFinalPrice = (listing: Listing) => {
-  return getListedPrice(listing);
+/** Returns the actual price the customer will pay i.e. price + postage - credit */
+export const getFinalPrice = (listing: Listing, opts: Opts) => {
+  return getListedPrice(listing) - getBalanceUsed(listing, opts);
 };
 
-/** Returns the price that will show on the storefront. This is like getFinalPrice but without postage */
+/** Returns the price that will show on the storefront. This is like getListedPrice but without postage */
 export const getDisplayPrice = (listing: Listing) => {
   return getBasePrice(listing);
 };
@@ -108,9 +118,9 @@ export const getTotalCharges = (listing: Listing) => {
 
 // These are all just speculative of course
 /** The amount paypal charges on pay in */
-export const getProviderPayInCharge = (listing: Listing) => {
+export const getProviderPayInCharge = (listing: Listing, opts: Opts) => {
   return (
-    Math.ceil(getFinalPrice(listing) * PROVIDER_PAY_IN_PERC) +
+    Math.ceil(getFinalPrice(listing, opts) * PROVIDER_PAY_IN_PERC) +
     PROVIDER_PAY_IN_FIXED
   );
 };
@@ -126,11 +136,13 @@ export const getProviderPayOutCharge = (listing: Listing) => {
 };
 
 /** Returns the amount we expect the payment provider to charge */
-export const getProviderCharges = (listing: Listing) => {
-  return getProviderPayInCharge(listing) + getProviderPayOutCharge(listing);
+export const getProviderCharges = (listing: Listing, opts: Opts) => {
+  return (
+    getProviderPayInCharge(listing, opts) + getProviderPayOutCharge(listing)
+  );
 };
 
 /** Returns the amount sns will have after the payment provider has taken its cut */
-export const getProfit = (listing: Listing) => {
-  return getTotalCharges(listing) - getProviderCharges(listing);
+export const getProfit = (listing: Listing, opts: Opts) => {
+  return getTotalCharges(listing) - getProviderCharges(listing, opts);
 };

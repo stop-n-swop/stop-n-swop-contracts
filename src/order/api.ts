@@ -34,7 +34,7 @@ export interface PatchOrderParams {
 }
 export type PatchOrderRequest = Pick<
   Partial<Order>,
-  'trackingNumber' | 'trackingProvider'
+  'trackingNumber' | 'trackingProvider' | 'useBalance'
 >;
 export type PatchOrderResponse = Order;
 

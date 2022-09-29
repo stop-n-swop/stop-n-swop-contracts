@@ -25,6 +25,7 @@ export interface User {
   preferences: {
     manualApproval: boolean;
     noticeEmails: boolean;
+    useBalance: boolean;
   };
   verified: boolean;
   logins: OauthProvider[];

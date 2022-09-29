@@ -25,6 +25,7 @@ export const user: User = {
   preferences: {
     manualApproval: false,
     noticeEmails: true,
+    useBalance: true,
   },
   verified: true,
 };
@@ -98,4 +99,5 @@ export const order: Order = {
   postedDate: new Date(),
   trackingNumber: '',
   trackingProvider: '',
+  useBalance: false,
 };

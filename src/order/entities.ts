@@ -12,4 +12,5 @@ export interface Order {
   postedDate: Date;
   trackingProvider: string;
   trackingNumber: string;
+  useBalance: boolean;
 }

@@ -21,7 +21,10 @@ export interface UpdateUserRequest
   extends Pick<Partial<User>, 'username' | 'level'> {
   address?: Partial<User['address']>;
   clientEmail?: string;
-  preferences?: Pick<Partial<User['preferences']>, 'noticeEmails'>;
+  preferences?: Pick<
+    Partial<User['preferences']>,
+    'noticeEmails' | 'useBalance'
+  >;
 }
 
 export type UpdateUserResponse = void;
