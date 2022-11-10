@@ -8,13 +8,13 @@ const PROVIDER_PAY_IN_FIXED = 20;
 const PROVIDER_PAY_OUT_PERC = 0;
 const PROVIDER_PAY_OUT_FIXED = 0;
 
-// Pay SNS 3% buyer protection fee
-const PROTECTION_PERC = 0.03;
-const PROTECTION_FIXED = 0;
-// Pay SNS 3% platform fee
-const PLATFORM_PERC = 0.03;
-// Pay SNS 20p fixed fee
-const PLATFORM_FIXED = 20;
+// Pay SNS % buyer protection fee
+const PROTECTION_PERC = 0.04;
+const PROTECTION_FIXED = 20;
+// Pay SNS % platform fee
+const PLATFORM_PERC = 0;
+// Pay SNS fixed fee
+const PLATFORM_FIXED = 0;
 
 type Opts = { useBalance?: boolean; balance?: number };
 
