@@ -23,7 +23,13 @@ export interface UpdateUserRequest
   clientEmail?: string;
   preferences?: Pick<
     Partial<User['preferences']>,
-    'noticeEmails' | 'useBalance'
+    | 'noticeEmails'
+    | 'useBalance'
+    | 'boxed'
+    | 'condition'
+    | 'includeProtection'
+    | 'instructions'
+    | 'region'
   >;
 }
 

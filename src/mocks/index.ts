@@ -26,6 +26,11 @@ export const user: User = {
     manualApproval: false,
     noticeEmails: true,
     useBalance: true,
+    boxed: null,
+    condition: null,
+    includeProtection: null,
+    instructions: null,
+    region: null,
   },
   verified: true,
 };
