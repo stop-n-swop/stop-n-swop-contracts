@@ -3,15 +3,6 @@ import { AuditItem, Listing, Discount } from './entities';
 import { Condition, Region } from './enums';
 import { Address } from '../user';
 
-export type GetListingRequirementsRequest = void;
-
-export interface GetListingRequirementsResponse {
-  photos: Array<{
-    key: string;
-    required: boolean;
-  }>;
-}
-
 export type CreateListingRequest = Omit<UpdateListingRequest, 'id'>;
 
 export interface CreateListingResponse {

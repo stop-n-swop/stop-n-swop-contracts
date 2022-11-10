@@ -11,7 +11,7 @@ export interface Stats {
 export interface Listing {
   id: string;
   productIds: string[];
-  images: Record<string, string>;
+  images: string[];
   price: number;
   postage: number;
   discount?: Discount;

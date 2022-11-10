@@ -70,9 +70,7 @@ export const listing: Listing = {
   completedDate: new Date(),
   currency: 'GBP',
   description: '',
-  images: {
-    main: exampleBoxArt,
-  },
+  images: [exampleBoxArt],
   location: 'London, UK',
   postage: 0,
   price: 20000,
