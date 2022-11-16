@@ -15,6 +15,8 @@ const PROTECTION_FIXED = 20;
 const PLATFORM_PERC = 0;
 // Pay SNS fixed fee
 const PLATFORM_FIXED = 0;
+// Pay out fee
+const PAYOUT_FIXED = 20;
 
 type Opts = { useBalance?: boolean; balance?: number };
 
@@ -29,100 +31,61 @@ export const getPostage = (listing: Listing) => {
 };
 
 /** Returns the total price set by the seller, i.e. base price + postage */
-export const getListedPrice = (listing: Listing) => {
+export const getSellPrice = (listing: Listing) => {
   return getBasePrice(listing) + getPostage(listing);
+};
+
+/** Returns the amount of order protection that will be added to the listed price */
+export const getProtectionCharge = (listing: Listing) => {
+  const listedPrice = getSellPrice(listing);
+  return Math.ceil(listedPrice * PROTECTION_PERC) + PROTECTION_FIXED;
+};
+
+/** Returns the total price for the listing (base + postage + protection) */
+export const getBuyPrice = (listing: Listing) => {
+  return getSellPrice(listing) + getProtectionCharge(listing);
 };
 
 /** The amount of account balance the customer can use to pay for a listing */
 export const getBalanceUsed = (listing: Listing, opts: Opts) => {
   if (opts?.useBalance && opts.balance > 0) {
-    return Math.min(opts.balance, getListedPrice(listing));
+    return Math.min(opts.balance, getBuyPrice(listing));
   }
   return 0;
 };
 
-/** Returns the discount amount */
-export const getDiscount = (listing: Listing) => {
-  let discount = 0;
-  if (!listing.discount) {
-    return discount;
-  }
-  const total = getListedPrice(listing);
-  if (listing.discount.percentage) {
-    const percDiscount = Math.floor(
-      total * (listing.discount.percentage / 100),
-    );
-    discount += percDiscount;
-  }
-  if (listing.discount.fixed) {
-    discount += listing.discount.fixed;
-  }
-  return discount;
-};
-
-const getRawProtectionCharge = (listing: Listing) => {
-  return (
-    Math.ceil(getListedPrice(listing) * PROTECTION_PERC) + PROTECTION_FIXED
-  );
-};
-
-const getRawPlatformCharge = (listing: Listing) => {
-  return Math.ceil(getListedPrice(listing) * PLATFORM_PERC) + PLATFORM_FIXED;
-};
-
-/** Returns the amount of order protection that will be deducted from the listed price */
-export const getProtectionCharge = (listing: Listing) => {
-  // discounts are first deducted from the platform charge, any remaining is then deducted from the protection charge
-  // calculate the amount of discount remaining after the platform charge
-  // and then take that off the protection charge
-  const platformCharge = getRawPlatformCharge(listing);
-  const fullDiscount = getDiscount(listing);
-  // you can't discount more than 100% of the fees!
-  const discount = Math.max(fullDiscount - platformCharge, 0);
-  const protection = getRawProtectionCharge(listing);
-
-  return Math.max(protection - discount, 0);
-};
-
 /** Returns the total platform charge that will be deducted from the listed price */
 export const getPlatformCharge = (listing: Listing) => {
-  const charge = getRawPlatformCharge(listing);
-  const discount = getDiscount(listing);
-  return Math.max(charge - discount, 0);
+  return Math.ceil(getSellPrice(listing) * PLATFORM_PERC) + PLATFORM_FIXED;
 };
 
-/** Returns the actual price the customer will pay i.e. price + postage - credit */
+/** Returns the actual price the customer will pay i.e. price + postage + protection - credit */
 export const getFinalPrice = (listing: Listing, opts: Opts) => {
-  return getListedPrice(listing) - getBalanceUsed(listing, opts);
+  return getBuyPrice(listing) - getBalanceUsed(listing, opts);
 };
 
-/** Returns the price that will show on the storefront. This is like getListedPrice but without postage */
+/** Returns the price that will show on the storefront. This is like getSellPrice but without postage */
 export const getDisplayPrice = (listing: Listing) => {
-  return getBasePrice(listing);
-};
-
-/** Returns the amount sns will charge the seller (i.e. order protection + platform charge) */
-export const getListingCharges = (listing: Listing) => {
-  return getProtectionCharge(listing) + getPlatformCharge(listing);
+  return getBuyPrice(listing);
 };
 
 /** Returns the amount the seller will receive for a listing */
 export const getListingProfit = (listing: Listing) => {
-  return getListedPrice(listing) - getListingCharges(listing);
+  return getSellPrice(listing) - getPlatformCharge(listing);
 };
 
 /** Returns the total cut sns will take from the buyer and the seller */
 export const getTotalCharges = (listing: Listing) => {
-  return getListingCharges(listing);
+  return getPlatformCharge(listing) + getProtectionCharge(listing);
 };
 
 // These are all just speculative of course
-/** The amount paypal charges on pay in */
+/** The amount stripe charges on pay in */
 export const getProviderPayInCharge = (listing: Listing, opts: Opts) => {
-  return (
-    Math.ceil(getFinalPrice(listing, opts) * PROVIDER_PAY_IN_PERC) +
-    PROVIDER_PAY_IN_FIXED
-  );
+  const finalPrice = getFinalPrice(listing, opts);
+  const variableFee = Math.ceil(finalPrice * PROVIDER_PAY_IN_PERC);
+  const fixedFee = PROVIDER_PAY_IN_FIXED;
+  return variableFee + fixedFee;
 };
 
 /** Calculates the payout charge of any amount */
@@ -146,3 +109,6 @@ export const getProviderCharges = (listing: Listing, opts: Opts) => {
 export const getProfit = (listing: Listing, opts: Opts) => {
   return getTotalCharges(listing) - getProviderCharges(listing, opts);
 };
+
+/** Returns the amount SNS will deduct from a withdrawal */
+export const getPayoutCharges = (_amount: number) => PAYOUT_FIXED;
