@@ -10,6 +10,7 @@ export interface Address {
 }
 
 export interface User {
+  userId: string;
   email: string;
   merchantId: string;
   username: string;

@@ -8,6 +8,7 @@ export const exampleBoxArt =
   'http://www.boxmygames.com/wp-content/uploads/2015/07/Mario-Kart-64-2.jpg';
 
 export const user: User = {
+  userId: '1234',
   username: 'jb',
   address: {
     line1: 'Line 1',
@@ -73,6 +74,7 @@ export const game: Game = {
 
 export const listing: Listing = {
   id: 'listing-id-1',
+  userId: user.userId,
   createdDate: new Date(),
   completedDate: new Date(),
   currency: 'GBP',
@@ -99,10 +101,12 @@ export const order: Order = {
   deliveryAddress: null,
   errorCode: '',
   listingId: listing.id,
+  userId: user.userId,
   username: user.username,
   status: Status.OPEN,
   postedDate: new Date(),
   trackingNumber: '',
   trackingProvider: '',
   useBalance: false,
+  balanceUsed: 0,
 };

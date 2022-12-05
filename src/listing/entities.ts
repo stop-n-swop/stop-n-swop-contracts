@@ -22,6 +22,7 @@ export interface Listing {
   createdDate: Date;
   completedDate: Date;
   // computed
+  userId: string;
   username: string;
   location: string;
   rating: number;

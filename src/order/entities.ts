@@ -4,6 +4,7 @@ import type { Status } from './enums';
 export interface Order {
   id: string;
   listingId: string;
+  userId: string;
   username: string;
   status: Status;
   created: Date;
@@ -13,4 +14,5 @@ export interface Order {
   trackingProvider: string;
   trackingNumber: string;
   useBalance: boolean;
+  balanceUsed: number;
 }
