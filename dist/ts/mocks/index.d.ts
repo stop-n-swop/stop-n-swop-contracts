@@ -1,0 +1,12 @@
+import { Game, Platform } from '../product';
+import { Order } from '../order';
+import { Listing } from '../listing';
+import { User } from '../user';
+import { Merchant } from '../merchant';
+export declare const exampleBoxArt = "http://www.boxmygames.com/wp-content/uploads/2015/07/Mario-Kart-64-2.jpg";
+export declare const user: User;
+export declare const merchant: Merchant;
+export declare const platform: Platform;
+export declare const game: Game;
+export declare const listing: Listing;
+export declare const order: Order;
