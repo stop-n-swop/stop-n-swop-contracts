@@ -4,6 +4,7 @@
 export type UserEvents = {
   user_updated: {
     userId: string;
+    fields: Record<string, any>;
   };
   update_user_failed: {
     userId: string;
