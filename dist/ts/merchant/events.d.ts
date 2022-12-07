@@ -33,4 +33,7 @@ export type MerchantEvents = {
         merchantId: string;
         amount: number;
     };
+    balance_adjusted: {
+        userId: string;
+    };
 };
