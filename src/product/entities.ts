@@ -12,7 +12,9 @@ export interface Product {
   cover: string;
   banner: string;
   releaseDate: Date;
-  marketPrice: number;
+  spotPrice: number;
+  highPrice: number;
+  lowPrice: number;
 }
 
 export interface Game extends Product {

@@ -53,7 +53,9 @@ export const platform: Platform = {
   rawgId: 1,
   releaseDate: new Date(),
   type: ProductType.PLATFORM,
-  marketPrice: 0,
+  highPrice: 0,
+  lowPrice: 0,
+  spotPrice: 0,
 };
 
 export const game: Game = {
@@ -69,7 +71,9 @@ export const game: Game = {
   rawgId: 0,
   releaseDate: new Date(),
   type: ProductType.GAME,
-  marketPrice: 0,
+  highPrice: 0,
+  lowPrice: 0,
+  spotPrice: 0,
 };
 
 export const listing: Listing = {
