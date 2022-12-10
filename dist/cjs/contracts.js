@@ -19,8 +19,6 @@ exports.Region = void 0;
 
 const PROVIDER_PAY_IN_PERC = 0.014;
 const PROVIDER_PAY_IN_FIXED = 20;
-const PROVIDER_PAY_OUT_PERC = 0;
-const PROVIDER_PAY_OUT_FIXED = 0;
 const PROTECTION_PERC = 0.04;
 const PROTECTION_FIXED = 20;
 const PLATFORM_PERC = 0;
@@ -65,18 +63,15 @@ const getTotalCharges = listing => {
 };
 const getProviderPayInCharge = (listing, opts) => {
   const finalPrice = getFinalPrice(listing, opts);
+  if (finalPrice === 0) {
+    return 0;
+  }
   const variableFee = Math.ceil(finalPrice * PROVIDER_PAY_IN_PERC);
   const fixedFee = PROVIDER_PAY_IN_FIXED;
   return variableFee + fixedFee;
 };
-const calculateProviderPayOutCharge = amount => {
-  return Math.ceil(amount * PROVIDER_PAY_OUT_PERC) + PROVIDER_PAY_OUT_FIXED;
-};
-const getProviderPayOutCharge = listing => {
-  return calculateProviderPayOutCharge(getListingProfit(listing));
-};
 const getProviderCharges = (listing, opts) => {
-  return getProviderPayInCharge(listing, opts) + getProviderPayOutCharge(listing);
+  return getProviderPayInCharge(listing, opts);
 };
 const getProfit = (listing, opts) => {
   return getTotalCharges(listing) - getProviderCharges(listing, opts);
@@ -293,7 +288,6 @@ async function forEachAsync(arr, fn) {
 exports.LAPSED_DAYS_THRESHOLD = LAPSED_DAYS_THRESHOLD;
 exports.LAPSED_DAYS_WARNING = LAPSED_DAYS_WARNING;
 exports.after = after;
-exports.calculateProviderPayOutCharge = calculateProviderPayOutCharge;
 exports.filterAsync = filterAsync;
 exports.filterObj = filterObj;
 exports.forEachAsync = forEachAsync;
@@ -310,7 +304,6 @@ exports.getProfit = getProfit;
 exports.getProtectionCharge = getProtectionCharge;
 exports.getProviderCharges = getProviderCharges;
 exports.getProviderPayInCharge = getProviderPayInCharge;
-exports.getProviderPayOutCharge = getProviderPayOutCharge;
 exports.getSellPrice = getSellPrice;
 exports.getTotalCharges = getTotalCharges;
 exports.isEmpty = isEmpty;

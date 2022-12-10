@@ -4,9 +4,6 @@ import type { Listing } from './entities';
 const PROVIDER_PAY_IN_PERC = 0.014;
 // Pay Stripe 20p
 const PROVIDER_PAY_IN_FIXED = 20;
-// No payout fees for stripe
-const PROVIDER_PAY_OUT_PERC = 0;
-const PROVIDER_PAY_OUT_FIXED = 0;
 
 // Pay SNS % buyer protection fee
 const PROTECTION_PERC = 0.04;
@@ -102,21 +99,12 @@ export const getProviderPayInCharge = (
   opts: Opts,
 ) => {
   const finalPrice = getFinalPrice(listing, opts);
+  if (finalPrice === 0) {
+    return 0;
+  }
   const variableFee = Math.ceil(finalPrice * PROVIDER_PAY_IN_PERC);
   const fixedFee = PROVIDER_PAY_IN_FIXED;
   return variableFee + fixedFee;
-};
-
-/** Calculates the payout charge of any amount */
-export const calculateProviderPayOutCharge = (amount: number) => {
-  return Math.ceil(amount * PROVIDER_PAY_OUT_PERC) + PROVIDER_PAY_OUT_FIXED;
-};
-
-/** the amount paypal charges on pay out */
-export const getProviderPayOutCharge = (
-  listing: Pick<Listing, 'price' | 'postage'>,
-) => {
-  return calculateProviderPayOutCharge(getListingProfit(listing));
 };
 
 /** Returns the amount we expect the payment provider to charge */
@@ -124,9 +112,7 @@ export const getProviderCharges = (
   listing: Pick<Listing, 'price' | 'postage'>,
   opts: Opts,
 ) => {
-  return (
-    getProviderPayInCharge(listing, opts) + getProviderPayOutCharge(listing)
-  );
+  return getProviderPayInCharge(listing, opts);
 };
 
 /** Returns the amount sns will have after the payment provider has taken its cut */

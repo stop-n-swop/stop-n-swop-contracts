@@ -10,6 +10,7 @@ specifiers:
   '@commitlint/cli': ^16.0.1
   '@commitlint/config-conventional': ^16.0.0
   '@types/jest': ^27.4.0
+  '@types/node': ^18.11.9
   '@typescript-eslint/eslint-plugin': ^4.21.0
   '@typescript-eslint/parser': ^4.21.0
   babel-eslint: ^10.1.0
@@ -51,6 +52,7 @@ devDependencies:
   '@commitlint/cli': 16.3.0
   '@commitlint/config-conventional': 16.2.4
   '@types/jest': 27.5.2
+  '@types/node': 18.11.10
   '@typescript-eslint/eslint-plugin': 4.33.0_b437dje45jwsli5vlhomcei76i
   '@typescript-eslint/parser': 4.33.0_77fvizpdb3y4icyeo2mf4eo7em
   babel-eslint: 10.1.0_eslint@7.32.0

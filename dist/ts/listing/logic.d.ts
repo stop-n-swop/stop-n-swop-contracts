@@ -27,10 +27,6 @@ export declare const getListingProfit: (listing: Pick<Listing, 'price' | 'postag
 export declare const getTotalCharges: (listing: Pick<Listing, 'price' | 'postage'>) => number;
 /** The amount stripe charges on pay in */
 export declare const getProviderPayInCharge: (listing: Pick<Listing, 'price' | 'postage'>, opts: Opts) => number;
-/** Calculates the payout charge of any amount */
-export declare const calculateProviderPayOutCharge: (amount: number) => number;
-/** the amount paypal charges on pay out */
-export declare const getProviderPayOutCharge: (listing: Pick<Listing, 'price' | 'postage'>) => number;
 /** Returns the amount we expect the payment provider to charge */
 export declare const getProviderCharges: (listing: Pick<Listing, 'price' | 'postage'>, opts: Opts) => number;
 /** Returns the amount sns will have after the payment provider has taken its cut */
