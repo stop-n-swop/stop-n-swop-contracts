@@ -90,8 +90,8 @@ let NoticeType;
   NoticeType["KYC_FAILED"] = "kyc_failed";
 })(NoticeType || (NoticeType = {}));
 
-const LAPSED_DAYS_THRESHOLD = 10;
-const LAPSED_DAYS_WARNING = 7;
+const LAPSED_DAYS_THRESHOLD = 21;
+const LAPSED_DAYS_WARNING = 14;
 
 let Status;
 (function (Status) {

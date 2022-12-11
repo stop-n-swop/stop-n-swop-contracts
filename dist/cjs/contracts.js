@@ -94,8 +94,8 @@ exports.NoticeType = void 0;
   NoticeType["KYC_FAILED"] = "kyc_failed";
 })(exports.NoticeType || (exports.NoticeType = {}));
 
-const LAPSED_DAYS_THRESHOLD = 10;
-const LAPSED_DAYS_WARNING = 7;
+const LAPSED_DAYS_THRESHOLD = 21;
+const LAPSED_DAYS_WARNING = 14;
 
 exports.Status = void 0;
 (function (Status) {

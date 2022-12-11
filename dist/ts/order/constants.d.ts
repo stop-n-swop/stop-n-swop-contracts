@@ -1,2 +1,2 @@
-export declare const LAPSED_DAYS_THRESHOLD = 10;
-export declare const LAPSED_DAYS_WARNING = 7;
+export declare const LAPSED_DAYS_THRESHOLD = 21;
+export declare const LAPSED_DAYS_WARNING = 14;
