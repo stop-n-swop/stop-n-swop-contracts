@@ -5,6 +5,7 @@ export interface Merchant {
     balance: number;
     currency: string;
     accountNumber: string;
+    withdrawals: number[];
 }
 export interface MerchantAccount {
     merchantId: string;

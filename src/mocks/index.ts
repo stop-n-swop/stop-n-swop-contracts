@@ -43,6 +43,7 @@ export const merchant: Merchant = {
   balance: 0,
   currency: 'GBP',
   onboarded: true,
+  withdrawals: [],
 };
 
 export const platform: Platform = {
