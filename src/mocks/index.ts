@@ -34,6 +34,7 @@ export const user: User = {
     region: null,
   },
   verified: true,
+  rating: 0,
 };
 
 export const merchant: Merchant = {

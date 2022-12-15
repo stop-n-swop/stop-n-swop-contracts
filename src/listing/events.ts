@@ -31,6 +31,11 @@ export type ListingEvents = {
     listingId: string;
     message: string;
   };
+  listing_rating_changed: {
+    listingId: string;
+    userId: string;
+    rating: number;
+  };
   image_uploaded: { id: string };
   image_upload_failed: { message: string };
   image_amended: {

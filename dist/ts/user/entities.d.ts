@@ -34,4 +34,5 @@ export interface User {
     };
     verified: boolean;
     logins: OauthProvider[];
+    rating: number;
 }
