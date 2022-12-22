@@ -1,6 +1,8 @@
-import { Game } from './entities';
+import { Product } from './entities';
+import { ProductType } from './enums';
 
-export interface SearchGamesRequest {
+export interface SearchProductsRequest {
+  type?: ProductType;
   page?: number;
   q?: string;
   platformIds?: string[];
@@ -10,22 +12,24 @@ export interface SearchGamesRequest {
   developerIds?: string[];
   publisherIds?: string[];
 }
-export interface SearchGamesResponse {
+export interface SearchProductsResponse {
   nextPage: number;
   lastPage: number;
-  games: Game[];
+  products: Product[];
 }
 
-export type GetPopularGamesRequest = Record<string, never>;
-export type GetPopularGamesResponse = {
-  games: Game[];
+export type GetPopularProductsRequest = Record<string, never>;
+export type GetPopularProductsResponse = {
+  products: Product[];
 };
 
-export type GetGameParams = { gameId: string };
-export type GetGameRequest = void;
-export type GetGameResponse = Game;
+export type GetProductRequest = void;
+export type GetProductResponse = Product;
 
-export type GetSearchCountsRequest = Omit<SearchGamesRequest, 'page' | 'group'>;
+export type GetSearchCountsRequest = Omit<
+  SearchProductsRequest,
+  'page' | 'group'
+>;
 export interface GetSearchCountsResponse {
   total: number;
   platforms: Record<string, number>;
@@ -33,6 +37,6 @@ export interface GetSearchCountsResponse {
   publishers: Record<string, { id: string; name: string; count: number }>;
 }
 
-export type GameViwedParams = { productId: string };
-export type GameViewedRequest = void;
-export type GameViewedResponse = Record<string, never>;
+export type ProductViwedParams = { productId: string };
+export type ProductViewedRequest = void;
+export type ProductViewedResponse = Record<string, never>;

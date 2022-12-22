@@ -27,7 +27,6 @@ const configs = {
       sourcemap: false,
     }),
   ],
-  external: ['@sns/contracts/common'],
 };
 
 export default configs;
