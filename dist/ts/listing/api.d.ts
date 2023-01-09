@@ -2,7 +2,9 @@ import { Status } from '../order';
 import { AuditItem, Listing, Discount } from './entities';
 import { Condition, Region } from './enums';
 import { Address } from '../user';
-export type CreateListingRequest = Omit<UpdateListingRequest, 'id'>;
+export type CreateListingRequest = Omit<UpdateListingRequest, 'id'> & {
+    status?: Status;
+};
 export interface CreateListingResponse {
     id: string;
 }
