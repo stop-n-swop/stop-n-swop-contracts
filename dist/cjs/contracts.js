@@ -78,22 +78,6 @@ const getProfit = (listing, opts) => {
 };
 const getPayoutCharges = _amount => PAYOUT_FIXED;
 
-exports.NoticeType = void 0;
-(function (NoticeType) {
-  NoticeType["ORDER_CANCELLED"] = "order_cancelled";
-  NoticeType["ORDER_PLACED"] = "order_placed";
-  NoticeType["ORDER_DECLINED"] = "order_declined";
-  NoticeType["ORDER_NOT_PAID"] = "order_not_paid";
-  NoticeType["ORDER_POSTED"] = "order_posted";
-  NoticeType["ORDER_RECEIVED"] = "order_received";
-  NoticeType["ORDER_REFUNDED"] = "order_refunded";
-  NoticeType["ORDER_EXPIRING"] = "order_expiring";
-  NoticeType["ORDER_NO_RESPONSE"] = "order_no_response";
-  NoticeType["ORDER_COMPLETE"] = "order_complete";
-  NoticeType["KYC_VERIFIED"] = "kyc_verified";
-  NoticeType["KYC_FAILED"] = "kyc_failed";
-})(exports.NoticeType || (exports.NoticeType = {}));
-
 const LAPSED_DAYS_THRESHOLD = 21;
 const LAPSED_DAYS_WARNING = 14;
 

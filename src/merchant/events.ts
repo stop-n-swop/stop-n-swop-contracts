@@ -1,37 +1,62 @@
 /* eslint-disable @typescript-eslint/ban-types */
-
 /* eslint-disable camelcase */
-export type MerchantEvents = {
-  merchant_created: {
+import type { ErrorMessage, Message, Signal } from '../utils';
+import type { Merchant, MerchantAccount } from './entities';
+
+export type MerchantSignals = {
+  // READ
+  fetch_merchant: Signal<{
     userId: string;
     merchantId: string;
-  };
-  create_merchant_failed: {
+    authToken: string;
+  }>;
+  fetch_merchant_account: Signal<{
     userId: string;
-    message: string;
-  };
-  merchant_withdrawal: {
+    merchantId: string;
+    password: string;
+    authToken: string;
+  }>;
+  // WRITE
+  create_mechant: Signal<{ userId: string; authToken: string }>;
+  adjust_balance: Signal<{
     userId: string;
+    authToken: string;
+    amount: number;
     currency: string;
-    amountRequested: number;
-    amountTransferred: number;
     fee: number;
-  };
-  withdrawal_failed: {
+    type: 'pay-in' | 'pay-out' | 'transfer' | 'refund';
+    listingId?: string;
+    orderId?: string;
+  }>;
+  update_bank: Signal<{
     userId: string;
     merchantId: string;
-    amount: number;
-  };
-  merchant_bank_updated: { userId: string; merchantId: string };
-  update_merchant_bank_failed: {
+    authToken: string;
+    name: string;
+    sortCode: string;
+    accountNumber: string;
+  }>;
+};
+
+export type MerchantMessages = {
+  // READ
+  merchant_fetched: Message<{ merchant: Merchant }>;
+  fetch_merchant_failed: ErrorMessage<{ merchantId: string }>;
+  merchant_account_fetched: Message<{ merchant: MerchantAccount }>;
+  fetch_merchant_account_failed: ErrorMessage;
+  // WRITE
+  balance_adjusted: Message<{ userId: string }>;
+  adjust_balance_failed: ErrorMessage<{ userId: string }>;
+  bank_updated: Message<{ userId: string; merchantId: string }>;
+  update_bank_failed: ErrorMessage<{
     userId: string;
     merchantId: string;
-    message: string;
-  };
-  payout_complete: {
+  }>;
+  merchant_created: Message<{
     userId: string;
     merchantId: string;
-    amount: number;
-  };
-  balance_adjusted: { userId: string };
+  }>;
+  create_merchant_failed: ErrorMessage<{
+    userId: string;
+  }>;
 };

@@ -1,28 +1,71 @@
 /* eslint-disable @typescript-eslint/ban-types */
-
 /* eslint-disable camelcase */
-export type PaymentEvents = {
-  payment_intent_succeeded: {
+
+import type { Payout } from '../merchant';
+import type { ErrorMessage, Message, Signal } from '../utils';
+import { Transaction } from './entities';
+
+export type PaymentSignals = {
+  // READ
+  fetch_payment_intent: Signal<{ authToken: string; orderId: string }>;
+  fetch_payouts: Signal<{ userId: string; authToken: string }>;
+  fetch_transactions: Signal<{ userId: string; authToken: string }>;
+  // WRITE
+  start_pay_in: Signal<{ authToken: string; userId: string; orderId: string }>;
+  continue_pay_in: Signal<{
     userId: string;
     orderId: string;
-  };
-  order_payin_started: {
+    authToken: string;
+  }>;
+  complete_pay_in: Signal<{
+    userId: string;
+    orderId: string;
+    authToken: string;
+  }>;
+  refund_order: Signal<{ userId: string; orderId: string; authToken: string }>;
+  transfer_funds: Signal<{
+    authToken: string;
+    listingId: string;
+  }>;
+  withdraw_funds: Signal<{
+    userId: string;
+    merchantId: string;
+    authToken: string;
+    amount: number;
+  }>;
+  payout: Signal<{ userId: string; merchantId: string; authToken: string }>;
+};
+
+export type PaymentMessages = {
+  // READ
+  payment_intent_fetched: Message<{ secret: string; status: string }>;
+  fetch_payment_intent_failed: ErrorMessage;
+  payouts_fetched: Message<{ payouts: Payout[] }>;
+  fetch_payouts_failed: ErrorMessage;
+  transactions_fetched: Message<{ transactions: Transaction[] }>;
+  fetch_transactions_failed: ErrorMessage;
+  // WRITE
+  payment_intent_succeeded: Message<{
+    userId: string;
+    orderId: string;
+  }>;
+  order_payin_started: Message<{
     orderId: string;
     listingId: string;
     userId: string;
     cashToPay: number;
     balanceUsed: number;
     paymentId: string;
-  };
-  order_payin_completing: {
+  }>;
+  order_payin_completing: Message<{
     orderId: string;
     listingId: string;
     userId: string;
     cashToPay: number;
     balanceUsed: number;
     paymentId: string;
-  };
-  order_payin_completed: {
+  }>;
+  order_payin_completed: Message<{
     orderId: string;
     listingId: string;
     userId: string;
@@ -35,14 +78,13 @@ export type PaymentEvents = {
     totalListingCharges: number;
     amountAvailableToSeller: number;
     currency: string;
-  };
-  order_payin_failed: {
+  }>;
+  order_payin_failed: ErrorMessage<{
     orderId: string;
     listingId: string;
     userId: string;
-    message: string;
-  };
-  order_funds_transferred: {
+  }>;
+  order_funds_transferred: Message<{
     userId: string;
     orderId: string;
     listingId: string;
@@ -53,12 +95,11 @@ export type PaymentEvents = {
     amountTransferred: number;
     platformProfit: number;
     currency: string;
-  };
-  transfer_order_funds_failed: {
+  }>;
+  transfer_order_funds_failed: ErrorMessage<{
     listingId: string;
-    message: string;
-  };
-  order_refunded: {
+  }>;
+  order_refunded: Message<{
     orderId: string;
     listingId: string;
     userId: string;
@@ -68,6 +109,32 @@ export type PaymentEvents = {
     platformProfit: number;
     currency: string;
     // providerFees: number;
-  };
-  order_refund_failed: { userId: string; orderId: string; message: string };
+  }>;
+  order_refund_failed: ErrorMessage<{
+    userId: string;
+    orderId: string;
+  }>;
+  funds_withdrawn: Message<{
+    currency: string;
+    userId: string;
+    amountRequested: number;
+    amountTransferred: number;
+    platformCharge: number;
+    providerCharge: number;
+  }>;
+  withdraw_funds_failed: ErrorMessage<{
+    userId: string;
+    merchantId: string;
+    amount: number;
+  }>;
+  payout_complete: Message<{
+    userId: string;
+    merchantId: string;
+    amount: number;
+  }>;
+  payout_failed: ErrorMessage<{
+    userId: string;
+    merchantId: string;
+    amount: number;
+  }>;
 };

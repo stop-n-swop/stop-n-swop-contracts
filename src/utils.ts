@@ -10,6 +10,11 @@ export type PromiseType<T> = T extends PromiseLike<infer U> ? U : T;
 
 export type MaybePromise<T> = Promise<T> | T;
 
+type Payload = Record<string, unknown>;
+export type Signal<T = Payload> = { rayId: string } & T;
+export type Message<T = Payload> = Signal<T>;
+export type ErrorMessage<T = Payload> = Message<T> & { error: any };
+
 /** Returns a promise that never resolves */
 export const never = () =>
   new Promise<never>(() => {
