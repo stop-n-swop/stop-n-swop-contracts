@@ -75,3 +75,9 @@ export type GetDiscountParams = {
 };
 export type GetDiscountBody = void;
 export type GetDiscountResponse = Discount;
+export type GetRelatedListingsParams = {
+    listingId: string;
+};
+export type GetRelatedListingsResponse = {
+    listings: Listing[];
+};

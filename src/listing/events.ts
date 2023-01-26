@@ -30,6 +30,7 @@ export type ListingSignals = {
     limit?: number;
     ids?: string[];
   }>;
+  fetch_related_listings: Signal<{ listingId: string }>;
   // WRITE
   change_listing_status: Signal<{
     authToken: string;
@@ -84,6 +85,8 @@ export type ListingMessages = {
   fetch_suggestions_failed: ErrorMessage<{ userId: string }>;
   listings_searched: Message<{ listings: Listing[] }>;
   search_listings_failed: ErrorMessage;
+  related_listings_fetched: Message<{ listings: Listing[] }>;
+  fetch_related_listings_failed: ErrorMessage;
   // WRITE
   listing_status_changed: Message<{
     listingId: string;
