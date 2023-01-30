@@ -10,3 +10,8 @@ export declare enum Region {
     NTSCC = "ntscc",
     NTSCJ = "ntscj"
 }
+export declare enum VerifyStatus {
+    UNVERIFIED = "unverified",
+    APPROVED = "approved",
+    REJECTED = "rejected"
+}

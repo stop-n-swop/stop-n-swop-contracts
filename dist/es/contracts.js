@@ -12,6 +12,12 @@ let Region;
   Region["NTSCC"] = "ntscc";
   Region["NTSCJ"] = "ntscj";
 })(Region || (Region = {}));
+let VerifyStatus;
+(function (VerifyStatus) {
+  VerifyStatus["UNVERIFIED"] = "unverified";
+  VerifyStatus["APPROVED"] = "approved";
+  VerifyStatus["REJECTED"] = "rejected";
+})(VerifyStatus || (VerifyStatus = {}));
 
 const PROVIDER_PAY_IN_PERC = 0.014;
 const PROVIDER_PAY_IN_FIXED = 20;
@@ -265,4 +271,4 @@ async function forEachAsync(arr, fn) {
   await mapAsync(arr, fn);
 }
 
-export { Condition, LAPSED_DAYS_THRESHOLD, LAPSED_DAYS_WARNING, OauthProvider, ProductType, Region, Status, UserLevel, after, filterAsync, filterObj, forEachAsync, getBalanceUsed, getBasePrice, getBuyPrice, getDisplayPrice, getFinalPrice, getListingProfit, getPayoutCharges, getPlatformCharge, getPostage, getProfit, getProtectionCharge, getProviderCharges, getProviderPayInCharge, getSellPrice, getTotalCharges, isEmpty, isNumeric, mapAsync, mapObj, mapSync, never, omit, omitEmptyProperties, omitNullProperties, pipe, pipeAsync, reduceAsync, reduceObj, sortBy, t, unique };
+export { Condition, LAPSED_DAYS_THRESHOLD, LAPSED_DAYS_WARNING, OauthProvider, ProductType, Region, Status, UserLevel, VerifyStatus, after, filterAsync, filterObj, forEachAsync, getBalanceUsed, getBasePrice, getBuyPrice, getDisplayPrice, getFinalPrice, getListingProfit, getPayoutCharges, getPlatformCharge, getPostage, getProfit, getProtectionCharge, getProviderCharges, getProviderPayInCharge, getSellPrice, getTotalCharges, isEmpty, isNumeric, mapAsync, mapObj, mapSync, never, omit, omitEmptyProperties, omitNullProperties, pipe, pipeAsync, reduceAsync, reduceObj, sortBy, t, unique };

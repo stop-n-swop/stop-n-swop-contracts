@@ -11,3 +11,9 @@ export enum Region {
   NTSCC = 'ntscc',
   NTSCJ = 'ntscj',
 }
+
+export enum VerifyStatus {
+  UNVERIFIED = 'unverified',
+  APPROVED = 'approved',
+  REJECTED = 'rejected',
+}

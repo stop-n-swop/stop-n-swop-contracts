@@ -16,6 +16,12 @@ exports.Region = void 0;
   Region["NTSCC"] = "ntscc";
   Region["NTSCJ"] = "ntscj";
 })(exports.Region || (exports.Region = {}));
+exports.VerifyStatus = void 0;
+(function (VerifyStatus) {
+  VerifyStatus["UNVERIFIED"] = "unverified";
+  VerifyStatus["APPROVED"] = "approved";
+  VerifyStatus["REJECTED"] = "rejected";
+})(exports.VerifyStatus || (exports.VerifyStatus = {}));
 
 const PROVIDER_PAY_IN_PERC = 0.014;
 const PROVIDER_PAY_IN_FIXED = 20;

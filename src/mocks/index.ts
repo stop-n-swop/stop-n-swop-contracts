@@ -1,6 +1,6 @@
 import { Game, Platform, ProductType } from '../product';
 import { Order, Status } from '../order';
-import { Listing, Condition, Region } from '../listing';
+import { Listing, Condition, Region, VerifyStatus } from '../listing';
 import { User, UserLevel } from '../user';
 import { Merchant } from '../merchant';
 
@@ -93,6 +93,7 @@ export const listing: Listing = {
   rating: 0,
   status: Status.OPEN,
   username: user.username,
+  verified: VerifyStatus.APPROVED,
   stats: {
     boxed: true,
     condition: Condition.LIKE_NEW,

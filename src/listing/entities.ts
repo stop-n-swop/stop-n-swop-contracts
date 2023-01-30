@@ -1,4 +1,4 @@
-import type { Condition, Region } from './enums';
+import type { Condition, Region, VerifyStatus } from './enums';
 import type { Status } from '../order/enums';
 
 export interface Stats {
@@ -27,6 +27,7 @@ export interface Listing {
   location: string;
   rating: number;
   status: Status;
+  verified: VerifyStatus;
 }
 
 export interface AuditItem {

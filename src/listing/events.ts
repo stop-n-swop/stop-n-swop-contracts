@@ -4,7 +4,7 @@ import type { Signal, Message, ErrorMessage } from '../utils';
 import type { Status } from '../order';
 import type { AuditItem, Listing, Stats } from './entities';
 import type { Address } from '../user';
-import type { Condition, Region } from './enums';
+import type { Condition, Region, VerifyStatus } from './enums';
 
 export type ListingSignals = {
   // READ
@@ -29,6 +29,7 @@ export type ListingSignals = {
     sortBy?: string;
     limit?: number;
     ids?: string[];
+    verified?: VerifyStatus;
   }>;
   fetch_related_listings: Signal<{ listingId: string }>;
   // WRITE
@@ -64,6 +65,12 @@ export type ListingSignals = {
   delete_listing: Signal<{ authToken: string; listingId: string }>;
   sync_listing_rating: Signal<{ id: string; authToken: string }>;
   sync_listing_status: Signal<{ listingId: string; authToken: string }>;
+  verify_listing: Signal<{
+    listingId: string;
+    authToken: string;
+    value: boolean;
+    reason: string;
+  }>;
 };
 
 export type ListingMessages = {
@@ -123,4 +130,10 @@ export type ListingMessages = {
     userId: string;
     rating: number;
   }>;
+  listing_verified: Message<{
+    listingId: string;
+    value: boolean;
+    reason: string;
+  }>;
+  verify_listing_failed: ErrorMessage<{ listingId: string }>;
 };

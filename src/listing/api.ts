@@ -1,6 +1,6 @@
 import { Status } from '../order';
 import { AuditItem, Listing, Discount } from './entities';
-import { Condition, Region } from './enums';
+import { Condition, Region, VerifyStatus } from './enums';
 import { Address } from '../user';
 
 export type CreateListingRequest = Omit<UpdateListingRequest, 'id'> & {
@@ -21,6 +21,7 @@ export type UpdateListingRequest = Omit<
   | 'id'
   | 'discount'
   | 'completedDate'
+  | 'verified'
 >;
 export type UpdateListingResponse = Listing;
 
@@ -38,6 +39,7 @@ export interface SearchListingsRequest {
   sortBy?: string;
   limit?: number;
   ids?: string[];
+  verified?: VerifyStatus;
 }
 export interface SearchListingsResponse {
   listings: Listing[];
@@ -99,3 +101,7 @@ export type GetDiscountResponse = Discount;
 
 export type GetRelatedListingsParams = { listingId: string };
 export type GetRelatedListingsResponse = { listings: Listing[] };
+
+export type VerifyListingParams = { listingId: string };
+export type VerifyListingBody = { value: boolean; reason?: string };
+export type VerifyListingResponse = Record<string, never>;
