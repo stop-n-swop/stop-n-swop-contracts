@@ -11,6 +11,7 @@ export interface SearchProductsRequest {
   favourites?: boolean;
   developerIds?: string[];
   publisherIds?: string[];
+  ids?: string[];
 }
 export interface SearchProductsResponse {
   nextPage: number;
