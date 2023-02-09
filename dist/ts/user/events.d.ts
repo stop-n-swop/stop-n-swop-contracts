@@ -14,6 +14,10 @@ export type UserSignals = {
         userIds?: string[];
         authToken?: string;
     }>;
+    fetch_rating_scores: Signal<{
+        identity?: string;
+        listingId?: string;
+    }>;
     update_user: Signal<{
         authToken: string;
         userId: string;
@@ -67,6 +71,13 @@ export type UserMessages = {
         users: User[];
     }>;
     search_users_failed: ErrorMessage;
+    rating_scores_fetched: Message<{
+        scores: Array<{
+            key: string;
+            value: number;
+        }>;
+    }>;
+    fetch_rating_scores_failed: ErrorMessage;
     user_updated: Message<{
         userId: string;
         fields: Record<string, any>;
