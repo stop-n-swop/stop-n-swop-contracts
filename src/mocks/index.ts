@@ -1,6 +1,6 @@
 import { Game, Platform, ProductType } from '../product';
 import { Order, Status } from '../order';
-import { Listing, Condition, Region, VerifyStatus } from '../listing';
+import { Listing, Region, VerifyStatus } from '../listing';
 import { User, UserLevel } from '../user';
 import { Merchant } from '../merchant';
 
@@ -28,9 +28,9 @@ export const user: User = {
     noticeEmails: true,
     useBalance: true,
     boxed: null,
-    condition: null,
     includeProtection: null,
     instructions: null,
+    new: null,
     region: null,
   },
   verified: true,
@@ -55,9 +55,7 @@ export const platform: Platform = {
   rawgId: 1,
   releaseDate: new Date(),
   type: ProductType.PLATFORM,
-  highPrice: 0,
-  lowPrice: 0,
-  spotPrice: 0,
+  price: { cib: 0, loose: 0, mint: 0, spot: 0 },
 };
 
 export const game: Game = {
@@ -73,9 +71,7 @@ export const game: Game = {
   rawgId: 0,
   releaseDate: new Date(),
   type: ProductType.GAME,
-  highPrice: 0,
-  lowPrice: 0,
-  spotPrice: 0,
+  price: { cib: 0, loose: 0, mint: 0, spot: 0 },
 };
 
 export const listing: Listing = {
@@ -96,9 +92,9 @@ export const listing: Listing = {
   verified: VerifyStatus.APPROVED,
   stats: {
     boxed: true,
-    condition: Condition.LIKE_NEW,
     region: Region.PAL,
     instructions: true,
+    new: false,
   },
 };
 

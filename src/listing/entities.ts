@@ -1,11 +1,11 @@
-import type { Condition, Region, VerifyStatus } from './enums';
+import type { Region, VerifyStatus } from './enums';
 import type { Status } from '../order/enums';
 
 export interface Stats {
-  condition: Condition;
   region: Region;
   boxed: boolean;
   instructions: boolean;
+  new: boolean;
 }
 
 export interface Listing {
@@ -14,7 +14,6 @@ export interface Listing {
   images: string[];
   price: number;
   postage: number;
-  discount?: Discount;
   currency: string;
   stats: Stats;
   description: string;
@@ -36,10 +35,4 @@ export interface AuditItem {
   date: Date;
   username: string;
   status: Status;
-}
-
-export interface Discount {
-  name: string;
-  percentage: number;
-  fixed: number;
 }

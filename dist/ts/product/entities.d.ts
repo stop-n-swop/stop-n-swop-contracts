@@ -10,9 +10,12 @@ export interface Product {
     cover: string;
     banner: string;
     releaseDate: Date;
-    spotPrice: number;
-    highPrice: number;
-    lowPrice: number;
+    price: {
+        spot: number;
+        mint: number;
+        cib: number;
+        loose: number;
+    };
 }
 export interface Game extends Product {
     type: ProductType.GAME;

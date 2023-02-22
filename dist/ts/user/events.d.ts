@@ -1,4 +1,4 @@
-import type { Condition, Region } from '../listing';
+import type { Region } from '../listing';
 import type { ErrorMessage, Message, Signal } from '../utils';
 import type { Address, User } from './entities';
 export type UserSignals = {
@@ -27,7 +27,7 @@ export type UserSignals = {
             noticeEmails?: boolean;
             useBalance?: boolean;
             region?: Region;
-            condition?: Condition;
+            new?: boolean;
             boxed?: boolean;
             instructions?: boolean;
             includeProtection?: boolean;

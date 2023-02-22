@@ -4,7 +4,7 @@ import type { Signal, Message, ErrorMessage } from '../utils';
 import type { Status } from '../order';
 import type { AuditItem, Listing, Stats } from './entities';
 import type { Address } from '../user';
-import type { Condition, Region, VerifyStatus } from './enums';
+import type { Region, VerifyStatus } from './enums';
 
 export type ListingSignals = {
   // READ
@@ -20,7 +20,7 @@ export type ListingSignals = {
     userId?: string;
     boxed?: boolean;
     instructions?: boolean;
-    condition?: Condition[];
+    new?: boolean;
     region?: Region[];
     status?: Status;
     rating?: number;

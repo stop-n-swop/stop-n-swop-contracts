@@ -1,6 +1,6 @@
 import { Status } from '../order';
-import { AuditItem, Listing, Discount } from './entities';
-import { Condition, Region, VerifyStatus } from './enums';
+import { AuditItem, Listing } from './entities';
+import { Region, VerifyStatus } from './enums';
 import { Address } from '../user';
 export type CreateListingRequest = Omit<UpdateListingRequest, 'id'> & {
     status?: Status;
@@ -14,7 +14,7 @@ export interface SearchListingsRequest {
     productId?: string;
     boxed?: boolean;
     instructions?: boolean;
-    condition?: Condition | Condition[];
+    new?: boolean;
     region?: Region | Region[];
     rating?: number;
     minPrice?: number;
@@ -71,11 +71,6 @@ export interface GetListingAddressResponse {
     name: string;
     address: Address;
 }
-export type GetDiscountParams = {
-    productId: string;
-};
-export type GetDiscountBody = void;
-export type GetDiscountResponse = Discount;
 export type GetRelatedListingsParams = {
     listingId: string;
 };

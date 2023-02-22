@@ -1,4 +1,4 @@
-import type { Condition, Region } from '../listing';
+import type { Region } from '../listing';
 import type { UserLevel, OauthProvider } from './enums';
 export interface Address {
     line1: string;
@@ -27,9 +27,9 @@ export interface User {
         noticeEmails: boolean;
         useBalance: boolean;
         region: Region;
-        condition: Condition;
         boxed: boolean;
         instructions: boolean;
+        new: boolean;
         includeProtection: boolean;
     };
     verified: boolean;

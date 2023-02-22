@@ -1,10 +1,3 @@
-let Condition;
-(function (Condition) {
-  Condition["MINT"] = "mint";
-  Condition["LIKE_NEW"] = "likeNew";
-  Condition["USED"] = "used";
-  Condition["POOR"] = "poor";
-})(Condition || (Condition = {}));
 let Region;
 (function (Region) {
   Region["PAL"] = "pal";
@@ -271,4 +264,4 @@ async function forEachAsync(arr, fn) {
   await mapAsync(arr, fn);
 }
 
-export { Condition, LAPSED_DAYS_THRESHOLD, LAPSED_DAYS_WARNING, OauthProvider, ProductType, Region, Status, UserLevel, VerifyStatus, after, filterAsync, filterObj, forEachAsync, getBalanceUsed, getBasePrice, getBuyPrice, getDisplayPrice, getFinalPrice, getListingProfit, getPayoutCharges, getPlatformCharge, getPostage, getProfit, getProtectionCharge, getProviderCharges, getProviderPayInCharge, getSellPrice, getTotalCharges, isEmpty, isNumeric, mapAsync, mapObj, mapSync, never, omit, omitEmptyProperties, omitNullProperties, pipe, pipeAsync, reduceAsync, reduceObj, sortBy, t, unique };
+export { LAPSED_DAYS_THRESHOLD, LAPSED_DAYS_WARNING, OauthProvider, ProductType, Region, Status, UserLevel, VerifyStatus, after, filterAsync, filterObj, forEachAsync, getBalanceUsed, getBasePrice, getBuyPrice, getDisplayPrice, getFinalPrice, getListingProfit, getPayoutCharges, getPlatformCharge, getPostage, getProfit, getProtectionCharge, getProviderCharges, getProviderPayInCharge, getSellPrice, getTotalCharges, isEmpty, isNumeric, mapAsync, mapObj, mapSync, never, omit, omitEmptyProperties, omitNullProperties, pipe, pipeAsync, reduceAsync, reduceObj, sortBy, t, unique };

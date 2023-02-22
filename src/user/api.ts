@@ -26,7 +26,7 @@ export interface UpdateUserRequest
     | 'noticeEmails'
     | 'useBalance'
     | 'boxed'
-    | 'condition'
+    | 'new'
     | 'includeProtection'
     | 'instructions'
     | 'region'
