@@ -7,7 +7,7 @@ const PROVIDER_PAY_IN_FIXED = 20;
 
 // Pay SNS % buyer protection fee
 const PROTECTION_PERC = 0.04;
-const PROTECTION_FIXED = 20;
+const PROTECTION_FIXED = 0;
 // Pay SNS % platform fee
 const PLATFORM_PERC = 0;
 // Pay SNS fixed fee

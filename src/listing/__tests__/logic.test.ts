@@ -34,7 +34,7 @@ describe('getSellPrice', () => {
 describe('getProtectionCharge', () => {
   it('gets the amount of order protection the buyer will pay', () => {
     const result = getProtectionCharge({ ...listing, postage: 200 });
-    expect(result).toEqual(828);
+    expect(result).toEqual(808);
   });
 });
 
@@ -74,21 +74,21 @@ describe('getBalanceUsed', () => {
 describe('getBuyPrice', () => {
   it('gets the total price a buyer will pay', () => {
     const result = getBuyPrice({ ...listing, postage: 200 });
-    expect(result).toEqual(21028);
+    expect(result).toEqual(21008);
   });
 });
 
 describe('getDisplayPrice', () => {
   it('returns the price shown on the storefront', () => {
     const result = getDisplayPrice({ ...listing, postage: 200 });
-    expect(result).toEqual(21028);
+    expect(result).toEqual(21008);
   });
 });
 
 describe('getFinalPrice', () => {
   it('gets the price a user will pay', () => {
     const result = getFinalPrice({ ...listing, postage: 200 }, {});
-    expect(result).toEqual(21028);
+    expect(result).toEqual(21008);
   });
   describe('when the user has credit balance', () => {
     it('gets the remaining price a user will pay', () => {
@@ -96,7 +96,7 @@ describe('getFinalPrice', () => {
         { ...listing, postage: 200 },
         { useBalance: true, balance: 500 },
       );
-      expect(result).toEqual(20528);
+      expect(result).toEqual(20508);
     });
     describe('when the balance is more than the listing', () => {
       it('returns 0', () => {
