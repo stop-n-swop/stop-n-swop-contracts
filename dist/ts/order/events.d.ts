@@ -30,8 +30,8 @@ export type OrderSignals = {
     }>;
     delete_orders: Signal<{
         authToken: string;
-        userId: string;
-        status: Status[];
+        userId?: string;
+        status?: Status[];
     }>;
     update_order: Signal<{
         authToken: string;
@@ -59,6 +59,7 @@ export type OrderSignals = {
     }>;
     complete_abandoned_orders: Signal;
     warn_abandoned_orders: Signal;
+    purge_cancelled_orders: Signal;
 };
 export type OrderMessages = {
     order_fetched: Message<{
