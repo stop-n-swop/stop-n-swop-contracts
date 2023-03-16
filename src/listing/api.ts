@@ -27,6 +27,7 @@ export type UpdateListingResponse = Listing;
 
 export interface SearchListingsRequest {
   productId?: string;
+  productIds?: string[];
   boxed?: boolean;
   instructions?: boolean;
   new?: boolean;

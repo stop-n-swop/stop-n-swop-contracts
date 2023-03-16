@@ -26,6 +26,7 @@ export type ListingSignals = {
     search_listings: Signal<{
         authToken?: string;
         productId?: string;
+        productIds?: string[];
         username?: string;
         userId?: string;
         boxed?: boolean;
