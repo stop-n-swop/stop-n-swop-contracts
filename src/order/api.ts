@@ -34,7 +34,7 @@ export interface PatchOrderParams {
 }
 export type PatchOrderRequest = Pick<
   Partial<Order>,
-  'trackingNumber' | 'trackingProvider' | 'useBalance'
+  'trackingNumber' | 'trackingProvider'
 >;
 export type PatchOrderResponse = Order;
 
@@ -45,3 +45,7 @@ export type GetOrderHistoryRequest = void;
 export interface GetOrderHistoryResponse {
   history: AuditItem[];
 }
+
+export type PlaceOrderParams = { orderId: string };
+export type PlaceOrderBody = Record<string, never>;
+export type PlaceOrderResponse = Record<string, never>;

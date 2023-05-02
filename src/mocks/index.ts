@@ -26,7 +26,6 @@ export const user: User = {
   preferences: {
     manualApproval: false,
     noticeEmails: true,
-    useBalance: true,
     boxed: null,
     includeProtection: null,
     instructions: null,
@@ -110,6 +109,4 @@ export const order: Order = {
   postedDate: new Date(),
   trackingNumber: '',
   trackingProvider: '',
-  useBalance: false,
-  balanceUsed: 0,
 };

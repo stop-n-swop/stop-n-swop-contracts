@@ -36,7 +36,7 @@ const getBuyPrice = listing => {
   return getSellPrice(listing) + getProtectionCharge(listing);
 };
 const getBalanceUsed = (listing, opts) => {
-  if (opts != null && opts.useBalance && opts.balance > 0) {
+  if (opts.balance > 0) {
     return Math.min(opts.balance, getBuyPrice(listing));
   }
   return 0;
@@ -83,8 +83,6 @@ let Status;
   Status["CLOSED"] = "closed";
   Status["CREATED"] = "created";
   Status["PENDING"] = "pending";
-  Status["PAYING"] = "paying";
-  Status["NOT_PAID"] = "notPaid";
   Status["PLACED"] = "placed";
   Status["APPROVED"] = "approved";
   Status["DECLINED"] = "declined";
@@ -98,6 +96,17 @@ let Status;
   Status["COMPLETE"] = "complete";
   Status["CANCELLED"] = "cancelled";
 })(Status || (Status = {}));
+
+let TransactionType;
+(function (TransactionType) {
+  TransactionType["PENDING"] = "pending";
+  TransactionType["PENDING_PAYOUT"] = "pendingPayout";
+  TransactionType["PAY_IN"] = "pay-in";
+  TransactionType["PURCHASE"] = "purchase";
+  TransactionType["REFUND"] = "refund";
+  TransactionType["TRANSFER"] = "transfer";
+  TransactionType["PAYOUT"] = "pay-out";
+})(TransactionType || (TransactionType = {}));
 
 let ProductType;
 (function (ProductType) {
@@ -264,4 +273,4 @@ async function forEachAsync(arr, fn) {
   await mapAsync(arr, fn);
 }
 
-export { LAPSED_DAYS_THRESHOLD, LAPSED_DAYS_WARNING, OauthProvider, ProductType, Region, Status, UserLevel, VerifyStatus, after, filterAsync, filterObj, forEachAsync, getBalanceUsed, getBasePrice, getBuyPrice, getDisplayPrice, getFinalPrice, getListingProfit, getPayoutCharges, getPlatformCharge, getPostage, getProfit, getProtectionCharge, getProviderCharges, getProviderPayInCharge, getSellPrice, getTotalCharges, isEmpty, isNumeric, mapAsync, mapObj, mapSync, never, omit, omitEmptyProperties, omitNullProperties, pipe, pipeAsync, reduceAsync, reduceObj, sortBy, t, unique };
+export { LAPSED_DAYS_THRESHOLD, LAPSED_DAYS_WARNING, OauthProvider, ProductType, Region, Status, TransactionType, UserLevel, VerifyStatus, after, filterAsync, filterObj, forEachAsync, getBalanceUsed, getBasePrice, getBuyPrice, getDisplayPrice, getFinalPrice, getListingProfit, getPayoutCharges, getPlatformCharge, getPostage, getProfit, getProtectionCharge, getProviderCharges, getProviderPayInCharge, getSellPrice, getTotalCharges, isEmpty, isNumeric, mapAsync, mapObj, mapSync, never, omit, omitEmptyProperties, omitNullProperties, pipe, pipeAsync, reduceAsync, reduceObj, sortBy, t, unique };

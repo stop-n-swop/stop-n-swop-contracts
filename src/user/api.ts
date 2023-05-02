@@ -24,7 +24,6 @@ export interface UpdateUserRequest
   preferences?: Pick<
     Partial<User['preferences']>,
     | 'noticeEmails'
-    | 'useBalance'
     | 'boxed'
     | 'new'
     | 'includeProtection'

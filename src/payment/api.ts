@@ -1,12 +1,10 @@
 import { Transaction } from './entities';
 
-export interface StartPaymentParams {
-  orderId: string;
-}
-export type StartOrderBody = Record<string, never>;
-export type StartOrderResponse = Record<string, never>;
+export type StartPayinParams = Record<string, never>;
+export type StartPayinBody = { amount: number };
+export type StartPayinResponse = { paymentId: string };
 
-export type GetClientSecretParams = { orderId: string };
+export type GetClientSecretParams = { paymentId: string };
 export type GetClientSecretResponse = {
   secret: string;
   status:

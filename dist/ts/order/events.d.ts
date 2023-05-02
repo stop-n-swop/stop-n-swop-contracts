@@ -11,10 +11,6 @@ export type OrderSignals = {
         orderId: string;
         authToken: string;
     }>;
-    fetch_order_payment_id: Signal<{
-        id: string;
-        authToken: string;
-    }>;
     search_orders: Signal<{
         authToken: string;
         listingId?: string;
@@ -39,9 +35,6 @@ export type OrderSignals = {
         orderId: string;
         trackingProvider?: string;
         trackingNumber?: string;
-        useBalance?: boolean;
-        balanceUsed?: number;
-        paymentId?: string;
         postedAt?: Date;
     }>;
     change_order_status: Signal<{
@@ -73,12 +66,6 @@ export type OrderMessages = {
     }>;
     fetch_order_history_failed: ErrorMessage<{
         orderId: string;
-    }>;
-    order_payment_id_fetched: Message<{
-        paymentId: string;
-    }>;
-    fetch_order_payment_id_failed: ErrorMessage<{
-        id: string;
     }>;
     orders_searched: Message<{
         orders: Order[];

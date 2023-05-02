@@ -4,8 +4,6 @@ export declare enum Status {
     CLOSED = "closed",
     CREATED = "created",
     PENDING = "pending",
-    PAYING = "paying",
-    NOT_PAID = "notPaid",
     PLACED = "placed",
     APPROVED = "approved",
     DECLINED = "declined",

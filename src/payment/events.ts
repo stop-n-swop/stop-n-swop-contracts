@@ -7,20 +7,20 @@ import { Transaction } from './entities';
 
 export type PaymentSignals = {
   // READ
-  fetch_payment_intent: Signal<{ authToken: string; orderId: string }>;
+  fetch_payment_intent: Signal<{ authToken: string; paymentId: string }>;
   fetch_payouts: Signal<{ userId: string; authToken: string }>;
   fetch_transactions: Signal<{ userId: string; authToken: string }>;
   // WRITE
-  start_pay_in: Signal<{ authToken: string; userId: string; orderId: string }>;
-  continue_pay_in: Signal<{
-    userId: string;
-    orderId: string;
+  start_pay_in: Signal<{
     authToken: string;
+    userId: string;
+    amount: number;
+    currency: string;
   }>;
   complete_pay_in: Signal<{
-    userId: string;
-    orderId: string;
     authToken: string;
+    userId: string;
+    paymentId: string;
   }>;
   refund_order: Signal<{ userId: string; orderId: string; authToken: string }>;
   transfer_funds: Signal<{
@@ -47,41 +47,22 @@ export type PaymentMessages = {
   // WRITE
   payment_intent_succeeded: Message<{
     userId: string;
-    orderId: string;
-  }>;
-  order_payin_started: Message<{
-    orderId: string;
-    listingId: string;
-    userId: string;
-    cashToPay: number;
-    balanceUsed: number;
     paymentId: string;
   }>;
-  order_payin_completing: Message<{
-    orderId: string;
-    listingId: string;
+  payin_started: Message<{
     userId: string;
-    cashToPay: number;
-    balanceUsed: number;
     paymentId: string;
-  }>;
-  order_payin_completed: Message<{
-    orderId: string;
-    listingId: string;
-    userId: string;
-    balanceUsed: number;
-    amountDebited: number;
-    providerFees: number;
-    amountCredited: number;
-    platformFees: number;
-    orderProtectionFee: number;
-    totalListingCharges: number;
-    amountAvailableToSeller: number;
+    amount: number;
     currency: string;
   }>;
-  order_payin_failed: ErrorMessage<{
-    orderId: string;
-    listingId: string;
+  payin_completed: Message<{
+    userId: string;
+    paymentId: string;
+    amount: number;
+    currency: string;
+    providerFee: number;
+  }>;
+  payin_failed: ErrorMessage<{
     userId: string;
   }>;
   order_funds_transferred: Message<{

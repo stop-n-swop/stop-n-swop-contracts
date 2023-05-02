@@ -27,7 +27,6 @@ export interface User {
   preferences: {
     manualApproval: boolean;
     noticeEmails: boolean;
-    useBalance: boolean;
     region: Region;
     boxed: boolean;
     instructions: boolean;

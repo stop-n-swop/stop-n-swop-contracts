@@ -1,3 +1,4 @@
+import { TransactionType } from '../payment';
 import type { ErrorMessage, Message, Signal } from '../utils';
 import type { Merchant, MerchantAccount } from './entities';
 export type MerchantSignals = {
@@ -22,7 +23,7 @@ export type MerchantSignals = {
         amount: number;
         currency: string;
         fee: number;
-        type: 'pay-in' | 'pay-out' | 'transfer' | 'refund';
+        type: TransactionType;
         listingId?: string;
         orderId?: string;
     }>;

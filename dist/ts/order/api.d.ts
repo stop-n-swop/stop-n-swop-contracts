@@ -27,7 +27,7 @@ export type UpdateOrderStatusResponse = Order;
 export interface PatchOrderParams {
     orderId: string;
 }
-export type PatchOrderRequest = Pick<Partial<Order>, 'trackingNumber' | 'trackingProvider' | 'useBalance'>;
+export type PatchOrderRequest = Pick<Partial<Order>, 'trackingNumber' | 'trackingProvider'>;
 export type PatchOrderResponse = Order;
 export interface GetOrderHistoryParams {
     orderId: string;
@@ -36,3 +36,8 @@ export type GetOrderHistoryRequest = void;
 export interface GetOrderHistoryResponse {
     history: AuditItem[];
 }
+export type PlaceOrderParams = {
+    orderId: string;
+};
+export type PlaceOrderBody = Record<string, never>;
+export type PlaceOrderResponse = Record<string, never>;

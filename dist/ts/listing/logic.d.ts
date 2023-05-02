@@ -1,6 +1,5 @@
 import type { Listing } from './entities';
 type Opts = {
-    useBalance?: boolean;
     balance?: number;
 };
 /** Returns the base price of the listing, not including postage */

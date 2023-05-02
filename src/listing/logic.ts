@@ -15,7 +15,7 @@ const PLATFORM_FIXED = 0;
 // Pay out fee
 const PAYOUT_FIXED = 20;
 
-type Opts = { useBalance?: boolean; balance?: number };
+type Opts = { balance?: number };
 
 /** Returns the base price of the listing, not including postage */
 export const getBasePrice = (listing: Pick<Listing, 'price'>) => {
@@ -50,7 +50,7 @@ export const getBalanceUsed = (
   listing: Pick<Listing, 'price' | 'postage'>,
   opts: Opts,
 ) => {
-  if (opts?.useBalance && opts.balance > 0) {
+  if (opts.balance > 0) {
     return Math.min(opts.balance, getBuyPrice(listing));
   }
   return 0;

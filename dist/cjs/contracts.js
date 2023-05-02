@@ -40,7 +40,7 @@ const getBuyPrice = listing => {
   return getSellPrice(listing) + getProtectionCharge(listing);
 };
 const getBalanceUsed = (listing, opts) => {
-  if (opts != null && opts.useBalance && opts.balance > 0) {
+  if (opts.balance > 0) {
     return Math.min(opts.balance, getBuyPrice(listing));
   }
   return 0;
@@ -87,8 +87,6 @@ exports.Status = void 0;
   Status["CLOSED"] = "closed";
   Status["CREATED"] = "created";
   Status["PENDING"] = "pending";
-  Status["PAYING"] = "paying";
-  Status["NOT_PAID"] = "notPaid";
   Status["PLACED"] = "placed";
   Status["APPROVED"] = "approved";
   Status["DECLINED"] = "declined";
@@ -102,6 +100,17 @@ exports.Status = void 0;
   Status["COMPLETE"] = "complete";
   Status["CANCELLED"] = "cancelled";
 })(exports.Status || (exports.Status = {}));
+
+exports.TransactionType = void 0;
+(function (TransactionType) {
+  TransactionType["PENDING"] = "pending";
+  TransactionType["PENDING_PAYOUT"] = "pendingPayout";
+  TransactionType["PAY_IN"] = "pay-in";
+  TransactionType["PURCHASE"] = "purchase";
+  TransactionType["REFUND"] = "refund";
+  TransactionType["TRANSFER"] = "transfer";
+  TransactionType["PAYOUT"] = "pay-out";
+})(exports.TransactionType || (exports.TransactionType = {}));
 
 exports.ProductType = void 0;
 (function (ProductType) {

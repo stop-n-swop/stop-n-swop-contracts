@@ -17,7 +17,7 @@ export type LoginResponse = RefreshTokenResponse;
 export interface UpdateUserRequest extends Pick<Partial<User>, 'username' | 'level'> {
     address?: Partial<User['address']>;
     clientEmail?: string;
-    preferences?: Pick<Partial<User['preferences']>, 'noticeEmails' | 'useBalance' | 'boxed' | 'new' | 'includeProtection' | 'instructions' | 'region'>;
+    preferences?: Pick<Partial<User['preferences']>, 'noticeEmails' | 'boxed' | 'new' | 'includeProtection' | 'instructions' | 'region'>;
 }
 export type UpdateUserResponse = void;
 export interface FetchFavouritesResponse {

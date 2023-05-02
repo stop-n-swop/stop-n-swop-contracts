@@ -25,7 +25,6 @@ export type UserSignals = {
         address?: Partial<Address>;
         preferences?: {
             noticeEmails?: boolean;
-            useBalance?: boolean;
             region?: Region;
             new?: boolean;
             boxed?: boolean;

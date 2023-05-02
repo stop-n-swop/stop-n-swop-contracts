@@ -43,7 +43,7 @@ describe('getBalanceUsed', () => {
     it('returns 0', () => {
       const result = getBalanceUsed(
         { ...listing, postage: 200 },
-        { useBalance: false, balance: 0 },
+        { balance: 0 },
       );
       expect(result).toEqual(0);
     });
@@ -51,10 +51,7 @@ describe('getBalanceUsed', () => {
   describe('when user has a credit balance', () => {
     it('returns the amount credit applicable to the listing', () => {
       const balance = 500;
-      const result = getBalanceUsed(
-        { ...listing, postage: 200 },
-        { useBalance: true, balance },
-      );
+      const result = getBalanceUsed({ ...listing, postage: 200 }, { balance });
       expect(result).toEqual(balance);
     });
     describe('when user has more credit than the full listing price', () => {
@@ -63,7 +60,7 @@ describe('getBalanceUsed', () => {
         const balance = buyPrice + 10000;
         const result = getBalanceUsed(
           { ...listing, postage: 200 },
-          { useBalance: true, balance },
+          { balance },
         );
         expect(result).toEqual(buyPrice);
       });
@@ -94,7 +91,7 @@ describe('getFinalPrice', () => {
     it('gets the remaining price a user will pay', () => {
       const result = getFinalPrice(
         { ...listing, postage: 200 },
-        { useBalance: true, balance: 500 },
+        { balance: 500 },
       );
       expect(result).toEqual(20508);
     });
@@ -102,7 +99,7 @@ describe('getFinalPrice', () => {
       it('returns 0', () => {
         const result = getFinalPrice(
           { ...listing, postage: 200 },
-          { useBalance: true, balance: 22000 },
+          { balance: 22000 },
         );
         expect(result).toEqual(0);
       });
