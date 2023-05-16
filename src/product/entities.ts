@@ -33,6 +33,7 @@ export interface Game extends Product {
 export interface Platform extends Product {
   type: ProductType.PLATFORM;
   rawgId: number;
+  shortName: string;
 }
 
 export interface Company {

@@ -1,4 +1,4 @@
-import { TransactionType } from '../payment';
+import type { TransactionType } from '../payment';
 import type { ErrorMessage, Message, Signal } from '../utils';
 import type { Merchant, MerchantAccount } from './entities';
 export type MerchantSignals = {

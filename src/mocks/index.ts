@@ -51,6 +51,7 @@ export const platform: Platform = {
   banner: '',
   cover: '',
   name: 'Nintendo 64',
+  shortName: 'N64',
   rawgId: 1,
   releaseDate: new Date(),
   type: ProductType.PLATFORM,
